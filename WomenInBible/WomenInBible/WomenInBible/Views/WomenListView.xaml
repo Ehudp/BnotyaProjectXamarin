@@ -1,7 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:WomenInBible.CustomViews;assembly=WomenInBible"
 					   x:Class="WomenInBible.Views.WomenListView">  
-  
-  <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Center" />
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Entry HorizontalOptions="FillAndExpand"
+           Placeholder="{Binding SearchPlaceholder}"
+           Text="{Binding SearchText}"/>
+
+    <custom:CustomListView ItemsSource="{Binding WomenList}"
+                    SelectedItem="{Binding SelectedWoman}"
+                    ItemClickCommand="{Binding OpenCardCommand}"
+                    x:Name="lst"
+                    RowHeight="35"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Fill"
+                    Grid.Row="1">
+      <custom:CustomListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout Padding="5, 5, 0, 5"
+                           Orientation="Horizontal"
+                           Spacing="15">
+
+                <Image Source="{Binding Icon}"/>
+
+                <Label Text="{Binding Name}"
+                       Font="Bold, Medium" />
+
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </custom:CustomListView.ItemTemplate>
+    </custom:CustomListView>
+
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Button Text="{Binding OpenTriviaButtonTitle}"
+              Command="{Binding OpenTriviaCommand}"
+             HorizontalOptions="FillAndExpand"/>
+      <Button Text="{Binding OpenInsightListButtonTitle}"
+              Command="{Binding OpenInsightListCommand}"
+               HorizontalOptions="FillAndExpand"
+              Grid.Column="1"/>
+    </Grid>
+
+  </Grid>
 </ContentPage>

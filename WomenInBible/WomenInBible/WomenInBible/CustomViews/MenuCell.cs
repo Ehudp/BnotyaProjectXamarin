@@ -7,60 +7,42 @@ using Xamarin.Forms;
 
 namespace WomenInBible.CustomViews
 {
-    public class MenuCell : ViewCell
+    public class MenuCell : MenuHeaderCell
     {
-        private Label _label;
-
-        public string Text
-        {
-            get { return _label.Text; }
-            set { _label.Text = value; }
-        }
-
         public MenuPage Host { get; set; }
+        private Image _image;
 
-        public MenuCell(MenuPage host = null)
+        public MenuCell(MenuPage host)
         {
             Host = host;
+
+            _image = new Image
+            {
+                Source = "ic_action_search.png"
+            };
 
             _label = new Label
             {
                 YAlign = TextAlignment.Center,
-                TextColor = Color.White
+                TextColor = Color.White,
+                FontAttributes = FontAttributes.None,
+                FontSize = 14
             };
 
             Height = 40;
 
-            if (Host != null)
+            View = new StackLayout
             {
-                _label.Font = Font.SystemFontOfSize(NamedSize.Medium);
-                View = new StackLayout
-                {
-                    Padding = new Thickness(20, 0, 0, 0),
-                    Orientation = StackOrientation.Horizontal,
-                    HorizontalOptions = LayoutOptions.StartAndExpand,
-                    BackgroundColor = Color.Aqua,
-                    Children = { _label }
-                };                
-            }
-            else
-            {
-                _label.Font = Font.BoldSystemFontOfSize(NamedSize.Large);
-                View = new StackLayout
-                {
-                    Padding = new Thickness(4, 0, 0, 0),
-                    Orientation = StackOrientation.Horizontal,
-                    HorizontalOptions = LayoutOptions.StartAndExpand,
-                    BackgroundColor = Color.Purple,
-                    Children = { _label }
-                };                             
-            }
+                Padding = new Thickness(20, 0, 0, 0),
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                BackgroundColor = Color.FromHex("#15776f"),
+                Children = { _image, _label }
+            };
         }
 
         protected override void OnTapped()
         {
-            if (Host == null) return;
-
             base.OnTapped();
             Host.Selected(_label.Text);
         }

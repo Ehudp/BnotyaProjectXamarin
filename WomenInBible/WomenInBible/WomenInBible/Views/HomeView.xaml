@@ -4,20 +4,40 @@
 					   x:Class="WomenInBible.Views.HomeView"
              Title="{Binding Title}">
 
-  <Grid>
+  <Grid VerticalOptions="Fill"
+        HorizontalOptions="Fill"
+        Padding="0, 20, 0, 20">
     <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />      
-      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />  
+      <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
-    <StackLayout>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    
       <Button Text="{Binding OpenWomenListButtonTitle}"
               Command="{Binding OpenWomenListCommand}"
-               HorizontalOptions="CenterAndExpand"/>
+               HorizontalOptions="Fill"
+              Grid.ColumnSpan="2"/>
 
       <Button Text="{Binding OpenTehilotButtonTitle}"
               Command="{Binding OpenTehilotCommand}"
-             HorizontalOptions="CenterAndExpand"/>
-    </StackLayout>
+             HorizontalOptions="Fill"
+              Grid.Row="1"
+              Grid.ColumnSpan="2"/>
+
+      <Button Text="{Binding OpenWomenListButtonTitle}"
+              Command="{Binding OpenWomenListCommand}"
+               HorizontalOptions="Fill"
+              Grid.Row="3" />
+
+      <Button Text="{Binding OpenTehilotButtonTitle}"
+              Command="{Binding OpenTehilotCommand}"
+             HorizontalOptions="Fill"
+              Grid.Row="3" Grid.Column="1"/>   
 
   </Grid>
 </ContentPage>

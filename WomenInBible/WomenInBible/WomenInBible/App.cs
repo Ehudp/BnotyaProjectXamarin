@@ -19,9 +19,12 @@ namespace WomenInBible
             NavigationManager.RegisterView(typeof(HomeViewModel), typeof(HomeView));
             NavigationManager.RegisterView(typeof(WomenListViewModel), typeof(WomenListView));
             NavigationManager.RegisterView(typeof(TehilotViewModel), typeof(TehilotView));
+            NavigationManager.RegisterView(typeof(MenuViewModel), typeof(MenuView));
+            NavigationManager.RegisterView(typeof(CardViewModel), typeof(CardView));
             
             var rootPage = new MasterDetailPage();
             rootPage.Master = new MenuPage(rootPage);
+            //rootPage.Master = new MenuViewModel().ResolveView();
             rootPage.Detail = new NavigationPage(new HomeViewModel().ResolveView());
             Navigation = rootPage.Detail.Navigation;
             return rootPage;

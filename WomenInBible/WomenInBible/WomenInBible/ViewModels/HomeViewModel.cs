@@ -12,39 +12,30 @@ namespace WomenInBible.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
-        private int _count = 0;
-
         private string _openWomenListButtonTitle;
         public string OpenWomenListButtonTitle
         {
             get { return _openWomenListButtonTitle; }
-            set { SetProperty<string>(ref _openWomenListButtonTitle, value, () => OpenWomenListButtonTitle); }
+            set { SetProperty(ref _openWomenListButtonTitle, value, () => OpenWomenListButtonTitle); }
         }
 
         private string _openTehilotButtonTitle;
         public string OpenTehilotButtonTitle
         {
             get { return _openTehilotButtonTitle; }
-            set { SetProperty<string>(ref _openTehilotButtonTitle, value, () => OpenTehilotButtonTitle); }
+            set { SetProperty(ref _openTehilotButtonTitle, value, () => OpenTehilotButtonTitle); }
         }
 
         private string _title;
         public string Title
         {
             get { return _title; }
-            set { SetProperty<string>(ref _title, value, () => Title); }
+            set { SetProperty(ref _title, value, () => Title); }
         }
 
         public ICommand OpenWomenListCommand
         {
-            get
-            {
-                return new Command(async (arg) =>
-                    {
-                        _count++;
-                        await NavigationManager.NavigateTo(new WomenListViewModel { Title = "Test " + _count });
-                    });
-            }
+            get { return new Command(async (arg) => await NavigationManager.NavigateTo(new WomenListViewModel())); }
         }
 
         public ICommand OpenTehilotCommand
@@ -54,6 +45,7 @@ namespace WomenInBible.ViewModels
 
         public HomeViewModel()
         {
+            Title = "Home";
             OpenWomenListButtonTitle = "Open Women List";
             OpenTehilotButtonTitle = "Open Tehilot Page";
         }

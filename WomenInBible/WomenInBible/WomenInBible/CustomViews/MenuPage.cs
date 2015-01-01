@@ -28,18 +28,18 @@ namespace WomenInBible.CustomViews
             _master = master;
 
             Title = "Bnotya App";
-            Icon = "slideout.png";
+            Icon = "ic_drawer.png";
 
             var section = new TableSection() {
-                new MenuCell {Text = "Home"},
+                new MenuHeaderCell {Text = "Home"},
 				new MenuCell(this) {Text = "Open Home"},				
-				new MenuCell {Text = "Tehilot"},
+				new MenuHeaderCell {Text = "Tehilot"},
                 new MenuCell(this) {Text = "Open Tehilot"},
-                new MenuCell {Text = "Women"},
+                new MenuHeaderCell {Text = "Women"},
 				new MenuCell(this) {Text = "Open Women List"},
                 new MenuCell(this) {Text = "Open Trivia Page"},
                 new MenuCell(this) {Text = "Open Insight List"},
-			};
+			};           
 
             var root = new TableRoot() { section };
 
@@ -47,7 +47,8 @@ namespace WomenInBible.CustomViews
             {
                 Root = root,
                 //				HeaderTemplate = new DataTemplate (typeof(MenuHeader)),
-                Intent = TableIntent.Menu,
+                Intent = TableIntent.Data,
+                HasUnevenRows = false
             };
 
             Content = new StackLayout

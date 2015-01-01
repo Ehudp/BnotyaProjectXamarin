@@ -24,7 +24,9 @@
     <JavaMaximumHeapSize />
     <JavaOptions />
     <AndroidUseLatestPlatformSdk />
-    <NuGetPackageImportStamp>86d3f6a8</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>69bdaf0a</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,26 +50,35 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FormsViewGroup">
+      <HintPath>..\..\packages\Xamarin.Forms.1.3.0.6292\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\..\packages\Xamarin.Android.Support.v4.19.0.2\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
+    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Xamarin.Android.Support.v4.19.1.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\..\packages\Xamarin.Forms.1.0.6186\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Core, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Xamarin.Forms.1.3.0.6292\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Platform.Android">
-      <HintPath>..\..\packages\Xamarin.Forms.1.0.6186\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Platform.Android, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Xamarin.Forms.1.3.0.6292\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\..\packages\Xamarin.Forms.1.0.6186\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Xaml, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Xamarin.Forms.1.3.0.6292\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomGestureListener.cs" />
+    <Compile Include="CustomTabRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,20 +93,110 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
+    <AndroidResource Include="Resources\Drawable\card1.png" />
+    <AndroidResource Include="Resources\Drawable\card1a.png" />
+    <AndroidResource Include="Resources\Drawable\card1b.png" />
+    <AndroidResource Include="Resources\Drawable\card2.png" />
+    <AndroidResource Include="Resources\Drawable\card2a.png" />
+    <AndroidResource Include="Resources\Drawable\card2b.png" />
+    <AndroidResource Include="Resources\Drawable\card3.png" />
+    <AndroidResource Include="Resources\Drawable\card3a.png" />
+    <AndroidResource Include="Resources\Drawable\card3b.png" />
+    <AndroidResource Include="Resources\Drawable\card4.png" />
+    <AndroidResource Include="Resources\Drawable\card4a.png" />
+    <AndroidResource Include="Resources\Drawable\card4b.png" />
+    <AndroidResource Include="Resources\Drawable\card5.png" />
+    <AndroidResource Include="Resources\Drawable\card5a.png" />
+    <AndroidResource Include="Resources\Drawable\card5b.png" />
+    <AndroidResource Include="Resources\Drawable\card6.png" />
+    <AndroidResource Include="Resources\Drawable\card6a.png" />
+    <AndroidResource Include="Resources\Drawable\card6b.png" />
+    <AndroidResource Include="Resources\Drawable\card7.png" />
+    <AndroidResource Include="Resources\Drawable\card7a.png" />
+    <AndroidResource Include="Resources\Drawable\card7b.png" />
+    <AndroidResource Include="Resources\Drawable\card8.png" />
+    <AndroidResource Include="Resources\Drawable\card8a.png" />
+    <AndroidResource Include="Resources\Drawable\card8b.png" />
+    <AndroidResource Include="Resources\Drawable\card9.png" />
+    <AndroidResource Include="Resources\Drawable\card9a.png" />
+    <AndroidResource Include="Resources\Drawable\card9b.png" />
+    <AndroidResource Include="Resources\Drawable\card10.png" />
+    <AndroidResource Include="Resources\Drawable\card10a.png" />
+    <AndroidResource Include="Resources\Drawable\card10b.png" />
+    <AndroidResource Include="Resources\Drawable\card11.png" />
+    <AndroidResource Include="Resources\Drawable\card11a.png" />
+    <AndroidResource Include="Resources\Drawable\card11b.png" />
+    <AndroidResource Include="Resources\Drawable\card12.png" />
+    <AndroidResource Include="Resources\Drawable\card12a.png" />
+    <AndroidResource Include="Resources\Drawable\card12b.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\alarm_off_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\alarm_on_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\back_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\background.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\clean_background.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\clock_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\disable_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\enable_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\events_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\fast_forward_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\forward_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\games_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_mail.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_overflow_light.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_action_search.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_drawer.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\logo_01.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\magnifying_glass_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\map_pin_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\minus_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\options_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\pause_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\plan_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\plus_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\rewind_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ringtone_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\set_date_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\set_time_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\settings_32.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\volume_32.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_light.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_action_search.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_drawer.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_light.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_search.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_drawer.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\drawer_shadow.9.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\ic_action_overflow.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\ic_action_overflow_light.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\ic_action_search.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\ic_drawer.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WomenInBible\WomenInBible.csproj">
       <Name>WomenInBible</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.1.0.6186\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.0.6186\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.0.6186\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.0.6186\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.3.0.6292\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.3.0.6292\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets'))" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.1.3.0.6292\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.3.0.6292\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

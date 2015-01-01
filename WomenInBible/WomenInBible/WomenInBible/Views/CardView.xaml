@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					   x:Class="WomenInBible.Views.CardView">	
+  <TabbedPage.Children>
+    <ContentPage Title="Page 1" >
+      <Image Source="{Binding CurrentCard.Front}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+    </ContentPage>
+    <ContentPage Title="Page 2" >
+      <Image Source="{Binding CurrentCard.Back}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+    </ContentPage>
+    <ContentPage Title="Page 3" >
+      <Image Source="{Binding CurrentCard.Insight}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+    </ContentPage>
+  </TabbedPage.Children>  
+</TabbedPage>
