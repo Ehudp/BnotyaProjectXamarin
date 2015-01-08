@@ -33,6 +33,13 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _title, value, () => Title); }
         }
 
+        private string _backgroundImage;
+        public string BackgroundImage
+        {
+            get { return _backgroundImage; }
+            set { SetProperty(ref _backgroundImage, value, () => BackgroundImage); }
+        }
+
         public ICommand OpenWomenListCommand
         {
             get { return new Command(async (arg) => await NavigationManager.NavigateTo(new WomenListViewModel())); }
@@ -46,6 +53,7 @@ namespace WomenInBible.ViewModels
         public HomeViewModel()
         {
             Title = "Home";
+            BackgroundImage = "background.png";
             OpenWomenListButtonTitle = "Open Women List";
             OpenTehilotButtonTitle = "Open Tehilot Page";
         }

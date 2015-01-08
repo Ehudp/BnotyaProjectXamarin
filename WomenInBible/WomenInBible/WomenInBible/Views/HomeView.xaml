@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
 					   x:Class="WomenInBible.Views.HomeView"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundImage="{Binding BackgroundImage}" >
+             
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:TestConverter x:Key="TestConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources> 
 
   <Grid VerticalOptions="Fill"
         HorizontalOptions="Fill"
@@ -10,34 +18,34 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
-      <RowDefinition Height="*" />  
+      <RowDefinition Height="*" />
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
       <ColumnDefinition/>
       <ColumnDefinition/>
     </Grid.ColumnDefinitions>
-    
-      <Button Text="{Binding OpenWomenListButtonTitle}"
-              Command="{Binding OpenWomenListCommand}"
-               HorizontalOptions="Fill"
-              Grid.ColumnSpan="2"/>
 
-      <Button Text="{Binding OpenTehilotButtonTitle}"
-              Command="{Binding OpenTehilotCommand}"
+    <Button Text="{Binding OpenWomenListButtonTitle}"
+            Command="{Binding OpenWomenListCommand}"
              HorizontalOptions="Fill"
-              Grid.Row="1"
-              Grid.ColumnSpan="2"/>
+            Grid.ColumnSpan="2" />
 
-      <Button Text="{Binding OpenWomenListButtonTitle}"
-              Command="{Binding OpenWomenListCommand}"
-               HorizontalOptions="Fill"
-              Grid.Row="3" />
+    <Button Text="{Binding OpenTehilotButtonTitle}"
+            Command="{Binding OpenTehilotCommand}"
+           HorizontalOptions="Fill"
+            Grid.Row="1"
+            Grid.ColumnSpan="2" />
 
-      <Button Text="{Binding OpenTehilotButtonTitle}"
-              Command="{Binding OpenTehilotCommand}"
+    <Button Text="{Binding OpenWomenListButtonTitle}"
+            Command="{Binding OpenWomenListCommand}"
              HorizontalOptions="Fill"
-              Grid.Row="3" Grid.Column="1"/>   
+            Grid.Row="3" />
+
+    <Button Text="{Binding OpenTehilotButtonTitle}"
+            Command="{Binding OpenTehilotCommand}"
+           HorizontalOptions="Fill"
+            Grid.Row="3" Grid.Column="1"/>
 
   </Grid>
 </ContentPage>

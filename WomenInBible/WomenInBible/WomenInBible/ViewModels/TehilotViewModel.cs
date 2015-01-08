@@ -11,15 +11,27 @@ namespace WomenInBible.ViewModels
 {
     public class TehilotViewModel : ViewModelBase
     {
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value, () => Title); }
+        }
+
         public ICommand OpenWomenListCommand
         {
             get
             {
                 return new Command(async (arg) =>
                 {
-                    await NavigationManager.NavigateTo(new WomenListViewModel { Title = "Test 0"});
+                    await NavigationManager.NavigateTo(new WomenListViewModel());
                 });
             }
+        }
+
+        public TehilotViewModel()
+        {
+            Title = "Tehilot";
         }
     }
 }

@@ -18,7 +18,8 @@ namespace WomenInBible.Managers
             if (_viewCollection == null)
                 _viewCollection = new Dictionary<Type, Type>();
 
-            _viewCollection.Add(viewModelType, viewType);            
+            if (!_viewCollection.ContainsKey(viewModelType))
+                _viewCollection.Add(viewModelType, viewType);            
         }
 
         public static Page ResolveView(this ViewModelBase viewModel)

@@ -88,6 +88,7 @@ namespace WomenInBible.ViewModels
             OpenTriviaButtonTitle = "Open Trivia Page";
             OpenInsightListButtonTitle = "Open Insight List";
             SearchPlaceholder = "Search";
+            Title = "Women List";
 
             WomenList = new ObservableCollection<Woman>
             {

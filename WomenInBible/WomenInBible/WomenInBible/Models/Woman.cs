@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,11 @@ using Xamarin.Forms;
 
 namespace WomenInBible.Models
 {
-    public class Woman : ViewModelBase
+    public class Woman : ViewModelBase, IModel
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         private string _name;
         public string Name
         {
@@ -29,6 +33,22 @@ namespace WomenInBible.Models
         {
             get { return _card; }
             set { SetProperty(ref _card, value, () => CurrentCard); }
+        }
+
+        private int _cardId;
+        public int CardId
+        {
+            get { return _cardId; }
+            set { SetProperty(ref _cardId, value, () => CardId); }
+        }
+
+        public void FillAllProperties<T>(T item)
+        {
+            var woman = item as Woman;
+            Name = woman.Name;
+            Icon = woman.Icon;
+            CurrentCard = woman.CurrentCard;
+            CardId = woman.CardId;
         }
     }
 }

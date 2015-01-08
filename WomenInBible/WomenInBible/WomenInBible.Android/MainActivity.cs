@@ -8,19 +8,22 @@ using Android.Widget;
 using Android.OS;
 
 using Xamarin.Forms.Platform.Android;
+using WomenInBible.Managers;
 
 namespace WomenInBible.Droid
 {
-    [Activity(Label = "WomenInBible", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : AndroidActivity
+    [Activity(Label = "WomenInBible", Icon = "@drawable/ic_launcher", MainLauncher = true, 
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity :
+        global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
+            base.OnCreate(bundle);           
 
-            Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            SetPage(App.GetMainPage());
+            LoadApplication(new App());             
         }
     }
 }
