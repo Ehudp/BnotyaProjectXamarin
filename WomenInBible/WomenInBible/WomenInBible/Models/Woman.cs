@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using WomenInBible.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Data;
 
 namespace WomenInBible.Models
 {
-    public class Woman : ViewModelBase, IModel
+    public class Woman : ObservableObject, IModel
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -21,8 +22,8 @@ namespace WomenInBible.Models
             set { SetProperty(ref _name, value, () => Name); }
         }
 
-        private ImageSource _icon;
-        public ImageSource Icon
+        private string _icon;
+        public string Icon
         {
             get { return _icon; }
             set { SetProperty(ref _icon, value, () => Icon); }

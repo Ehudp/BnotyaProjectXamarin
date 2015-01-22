@@ -12,18 +12,18 @@ namespace WomenInBible.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            DebugBreak();
+            DebugBreak(value);
             return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            DebugBreak();
+            DebugBreak(value);
             return value;
         }
 
         [Conditional("DEBUG")]
-        void DebugBreak()
+        void DebugBreak(object value)
         {
             if (System.Diagnostics.Debugger.IsAttached)
                 System.Diagnostics.Debugger.Break();

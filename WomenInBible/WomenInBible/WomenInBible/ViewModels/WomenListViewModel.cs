@@ -48,25 +48,39 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _openTriviaButtonTitle, value, () => OpenTriviaButtonTitle); }
         }
 
+        private ICommand _openInsightListCommand;
         public ICommand OpenInsightListCommand
         {
             get
             {
-                return new Command(async (arg) =>
-                {
-                    await NavigationManager.NavigateTo(new WomenListViewModel());
-                });
+                return _openInsightListCommand ?? (_openInsightListCommand = new Command(
+                  async () => await ShowViewModel<InsightListViewModel>(), () => true));
             }
         }
 
+        private ICommand _openTriviaCommand;
         public ICommand OpenTriviaCommand
         {
-            get { return new Command(async (arg) => await NavigationManager.NavigateTo(new TehilotViewModel())); }
+            get
+            {
+                return _openTriviaCommand ?? (_openTriviaCommand = new Command(
+                  async () => await ShowViewModel<TriviaViewModel>(), () => true));
+            }
         }
 
+        private ICommand _openCardCommand;
         public ICommand OpenCardCommand
         {
-            get { return new Command<Woman>(async (arg) => await NavigationManager.NavigateTo(new CardViewModel(arg.CurrentCard))); }
+            get
+            {
+                return _openCardCommand ?? (_openCardCommand = new Command(
+                  async () =>
+                  {
+                      var navParam = new Dictionary<string, object>();
+                      navParam.Add("Card", SelectedWoman.CurrentCard);
+                      await ShowViewModel<CardViewModel>(navParam);
+                  }, () => true));
+            }
         }
 
         private ObservableCollection<Woman> _womenList;
@@ -104,7 +118,7 @@ namespace WomenInBible.ViewModels
                 }
             };
 
-            CreateCardsAsync();           
+            CreateCardsAsync();
         }
 
         private async Task CreateCardsAsync()
@@ -120,7 +134,7 @@ namespace WomenInBible.ViewModels
                             Insight = string.Format("card{0}b.png", i)
                         };
                 }
-            }).ConfigureAwait(continueOnCapturedContext: false);
+            }).ConfigureAwait(false);
         }
     }
 }

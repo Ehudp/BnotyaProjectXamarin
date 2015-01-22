@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using WomenInBible.Managers;
+using WomenInBible.Models;
+using WomenInBible.Services;
 
 namespace WomenInBible.ViewModels
 {
@@ -40,22 +42,33 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _backgroundImage, value, () => BackgroundImage); }
         }
 
+        private ICommand _openWomenListCommand;
         public ICommand OpenWomenListCommand
         {
-            get { return new Command(async (arg) => await NavigationManager.NavigateTo(new WomenListViewModel())); }
+            get
+            {
+                return _openWomenListCommand ?? (_openWomenListCommand = new Command(
+                  async () => await ShowViewModel<WomenListViewModel>(), () => true));
+            }
         }
 
+        private ICommand _openTehilotCommand;
         public ICommand OpenTehilotCommand
         {
-            get { return new Command(async (arg) => await NavigationManager.NavigateTo(new TehilotViewModel())); }
+            get
+            {
+                return _openTehilotCommand ?? (_openTehilotCommand = new Command(
+                  async () => await ShowViewModel<TehilotViewModel>(), () => true));
+            }
         }
 
         public HomeViewModel()
-        {
+        {            
             Title = "Home";
-            BackgroundImage = "background.png";
+            BackgroundImage = "clean_background.png";
             OpenWomenListButtonTitle = "Open Women List";
-            OpenTehilotButtonTitle = "Open Tehilot Page";
-        }
+            OpenTehilotButtonTitle = "Open Tehilot Page";            
+            Task.Run(() => IoC.Resolve<DatabaseManager>().InitializationAwaiter);
+        }        
     }
 }

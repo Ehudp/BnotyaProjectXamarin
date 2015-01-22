@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WomenInBible.ViewModels;
+using Xamarin.Forms.Labs.Data;
 
 namespace WomenInBible.Models
 {
-    public class Answer : ViewModelBase, IModel
+    public class Answer : ObservableObject, IModel
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

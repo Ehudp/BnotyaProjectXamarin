@@ -15,8 +15,9 @@ namespace WomenInBible.CustomViews
             {
                 Text = "Bnotya App",
                 TextColor = Color.Gray,
-                Font = Font.BoldSystemFontOfSize(20)
-            };
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 20
+            };           
 
             Height = 60;
 

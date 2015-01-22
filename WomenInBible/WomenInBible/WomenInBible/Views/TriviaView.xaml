@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
+             xmlns:custom="clr-namespace:WomenInBible.CustomViews;assembly=WomenInBible"
+             x:Class="WomenInBible.Views.TriviaView"
+             Title="{Binding Title}">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:TestConverter x:Key="TestConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+  <StackLayout VerticalOptions="StartAndExpand"
+      Spacing = "10"
+      Padding = "10">
+    <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label Text="{Binding CurrentQuestion.Content, Converter={StaticResource TestConverter}}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <custom:CustomListView ItemsSource="{Binding CurrentQuestion.Answers}"
+                    SelectedItem="{Binding SelectedAnswer}"
+                    ItemClickCommand="{Binding AnswerSelectedCommand}"
+                    x:Name="lst"
+                    RowHeight="35"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Fill"
+                    Grid.Row="1">
+      <custom:CustomListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout Padding="5, 5, 0, 5"
+                           Orientation="Horizontal"
+                           Spacing="15">
+
+               <Label Text="{Binding Content}"
+                       Font="Bold, Medium" />
+
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </custom:CustomListView.ItemTemplate>
+    </custom:CustomListView>
+  </StackLayout>
+  
+</ContentPage>

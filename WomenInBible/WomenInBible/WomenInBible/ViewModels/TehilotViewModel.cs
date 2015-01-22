@@ -18,14 +18,13 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _title, value, () => Title); }
         }
 
+        private ICommand _openWomenListCommand;
         public ICommand OpenWomenListCommand
         {
             get
             {
-                return new Command(async (arg) =>
-                {
-                    await NavigationManager.NavigateTo(new WomenListViewModel());
-                });
+                return _openWomenListCommand ?? (_openWomenListCommand = new Command(
+                  async () => await ShowViewModel<WomenListViewModel>(), () => true));
             }
         }
 

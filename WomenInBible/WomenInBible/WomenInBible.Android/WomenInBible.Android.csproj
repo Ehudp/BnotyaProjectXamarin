@@ -50,6 +50,9 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="com.refractored.monodroidtoolkit">
+      <HintPath>..\..\packages\MonoDroid.Toolkit.1.1.0.0\lib\MonoAndroid10\com.refractored.monodroidtoolkit.dll</HintPath>
+    </Reference>
     <Reference Include="FormsViewGroup">
       <HintPath>..\..\packages\Xamarin.Forms.1.3.0.6292\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
@@ -89,6 +92,7 @@
     <Compile Include="CustomGestureListener.cs" />
     <Compile Include="CustomTabRenderer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\CircularProgressRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLite_Android.cs" />

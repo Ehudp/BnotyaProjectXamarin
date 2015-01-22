@@ -3,59 +3,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WomenInBible.CustomControls;
 using WomenInBible.CustomViews;
 using WomenInBible.Managers;
 using WomenInBible.Models;
+using WomenInBible.Services;
 using WomenInBible.ViewModels;
 using WomenInBible.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Mvvm;
+using Xamarin.Forms.Labs.Services;
 
 namespace WomenInBible
 {
-    public class App : Application 
-    {       
+    public class App : Application
+    {
         public static INavigation Navigation { get; set; }
-        public static DatabaseManager DBManager { get; set; }
 
         public App()
         {
+            InitApp();
+            //var vm = new SplashViewModel();
+            //MainPage = vm.ResolveView();
+            //vm.AfterLoading();
+
             MainPage = GetMainPage();
         }
 
-        public static Page GetMainPage()
+        public static MasterDetailPage GetMainPage()
         {
-            NavigationManager.RegisterView(typeof(HomeViewModel), typeof(HomeView));
-            NavigationManager.RegisterView(typeof(WomenListViewModel), typeof(WomenListView));
-            NavigationManager.RegisterView(typeof(TehilotViewModel), typeof(TehilotView));
-            NavigationManager.RegisterView(typeof(MenuViewModel), typeof(MenuView));
-            NavigationManager.RegisterView(typeof(CardViewModel), typeof(CardView));
-
-            DBManager = new DatabaseManager();
-            CreateDb();
-            
             var rootPage = new MasterDetailPage();
             rootPage.Master = new MenuPage(rootPage);
             //rootPage.Master = new MenuViewModel().ResolveView();
-            rootPage.Detail = new NavigationPage(new HomeViewModel().ResolveView());
+            rootPage.Detail = new NavigationPage(ViewFactory.CreatePage<HomeViewModel>());
             Navigation = rootPage.Detail.Navigation;
+
             return rootPage;
         }
 
-        public static void CreateDb() // TODO: For tests only
+        public static void SetMainPage()
         {
-            Task.Run(async () =>
-                {
-                    Question question1 = new Question { Content = "Who is the President of US?" };
-                    Question question2 = new Question { Content = "Who is the President of Mars?" };
-                    Answer answer1 = new Answer { Content = "Yoda" };
-                    Answer answer2 = new Answer { Content = "Bibi" };
-                    // Inserting answers in DB
-                    answer1.Id = await DBManager.InsertAsync<Answer>(answer1, x => x.Id == answer1.Id);
-                    answer2.Id = await DBManager.InsertAsync<Answer>(answer2, x => x.Id == answer2.Id);
-                    // Inserting questions in DB
-                    await Question.CreateQuestion(question1, new List<Answer> { answer1, answer2 }, answer1.Id);
-                    await Question.CreateQuestion(question2, new List<Answer> { answer1, answer2 }, answer2.Id);
-                });
+            Current.MainPage = GetMainPage();
+        }        
+
+        private void InitApp()
+        {
+            var resolverContainer = IoC.Container;
+
+            if (!Resolver.IsSet)
+            {
+                Resolver.SetResolver(resolverContainer.GetResolver());
+            }
+
+
+            IoC.Register<InsightService>(new InsightService());
+            IoC.Register<QuestionService>(new QuestionService());
+            IoC.Register<DatabaseManager>(new DatabaseManager());
+
+            ViewFactory.Register<HomeView, HomeViewModel>();
+            ViewFactory.Register<WomenListView, WomenListViewModel>();
+            ViewFactory.Register<TehilotView, TehilotViewModel>();
+            ViewFactory.Register<MenuView, MenuViewModel>();
+            ViewFactory.Register<CardView, CardViewModel>();
+            ViewFactory.Register<SplashView, SplashViewModel>();
+            ViewFactory.Register<TriviaView, TriviaViewModel>();
+            ViewFactory.Register<InsightListView, InsightListViewModel>();
+            ViewFactory.Register<InsightView, InsightViewModel>();                 
         }
     }
 }

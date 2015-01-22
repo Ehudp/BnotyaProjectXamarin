@@ -7,6 +7,7 @@ using WomenInBible.ViewModels;
 using WomenInBible.Views;
 using WomenInBible.Managers;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Mvvm;
 
 namespace WomenInBible.CustomViews
 {
@@ -65,19 +66,19 @@ namespace WomenInBible.CustomViews
             {                
                 case "Open Home":
                     if (_home == null)
-                        _home = new NavigationPage(new HomeViewModel().ResolveView());
+                        _home = new NavigationPage(ViewFactory.CreatePage<HomeViewModel>());
                     _master.Detail = _home;
                     App.Navigation = _home.Navigation;
                     break;                
                 case "Open Tehilot":
                     if (_tehilot == null)
-                        _tehilot = new NavigationPage(new TehilotViewModel().ResolveView());
+                        _tehilot = new NavigationPage(ViewFactory.CreatePage<TehilotViewModel>());
                     _master.Detail = _tehilot;
                     App.Navigation = _tehilot.Navigation;
                     break;
                 case "Open Women List":
                     if (_women == null)
-                        _women = new NavigationPage(new WomenListViewModel().ResolveView());
+                        _women = new NavigationPage(ViewFactory.CreatePage<WomenListViewModel>());
                     _master.Detail = _women;
                     App.Navigation = _women.Navigation;
                     break;

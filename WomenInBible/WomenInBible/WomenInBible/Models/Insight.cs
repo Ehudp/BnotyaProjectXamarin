@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WomenInBible.Managers;
 using WomenInBible.ViewModels;
+using Xamarin.Forms;
+using Xamarin.Forms.Labs.Data;
 
 namespace WomenInBible.Models
 {
-    public class Insight : ViewModelBase, IModel
+    public class Insight : ObservableObject, IModel
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -27,16 +30,19 @@ namespace WomenInBible.Models
             set { SetProperty(ref _isFavorite, value, () => IsFavorite); }
         }
 
+        private string _insightImage;
+        public string InsightImage
+        {
+            get { return _insightImage; }
+            set { SetProperty(ref _insightImage, value, () => InsightImage); }
+        }
+
         public void FillAllProperties<T>(T item)
         {
             var insight = item as Insight;
             Name = insight.Name;
             IsFavorite = insight.IsFavorite;
-        }
-
-        public static async Task<IEnumerable<Insight>> GetFavoriteInsights()
-        {
-            return await App.DBManager.QuerySelectedAsync<Insight, string>(x => x.IsFavorite, x => x.Name);
-        }
+            InsightImage = insight.InsightImage;
+        }        
     }
 }

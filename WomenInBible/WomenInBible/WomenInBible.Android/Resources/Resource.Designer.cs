@@ -26,6 +26,111 @@ namespace WomenInBible.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circleColor = global::WomenInBible.Droid.Resource.Attribute.circleColor;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circularProgressBarStyle = global::WomenInBible.Droid.Resource.Attribute.circularProgressBarStyle;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_gravity = global::WomenInBible.Droid.Resource.Attribute.circular_gravity;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_indeterminate = global::WomenInBible.Droid.Resource.Attribute.circular_indeterminate;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_indeterminate_interval = global::WomenInBible.Droid.Resource.Attribute.circular_indeterminate_interval;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_marker_progress = global::WomenInBible.Droid.Resource.Attribute.circular_marker_progress;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_progress = global::WomenInBible.Droid.Resource.Attribute.circular_progress;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_progress_background_color = global::WomenInBible.Droid.Resource.Attribute.circular_progress_background_color;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_progress_color = global::WomenInBible.Droid.Resource.Attribute.circular_progress_color;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.circular_stroke_width = global::WomenInBible.Droid.Resource.Attribute.circular_stroke_width;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.indeterminate = global::WomenInBible.Droid.Resource.Attribute.indeterminate;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.indeterminate_interval = global::WomenInBible.Droid.Resource.Attribute.indeterminate_interval;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.innerSize = global::WomenInBible.Droid.Resource.Attribute.innerSize;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.max = global::WomenInBible.Droid.Resource.Attribute.max;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.pinned = global::WomenInBible.Droid.Resource.Attribute.pinned;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.pinnedDrawable = global::WomenInBible.Droid.Resource.Attribute.pinnedDrawable;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.progress = global::WomenInBible.Droid.Resource.Attribute.progress;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.progressButtonStyle = global::WomenInBible.Droid.Resource.Attribute.progressButtonStyle;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.progressColor = global::WomenInBible.Droid.Resource.Attribute.progressColor;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.shadowDrawable = global::WomenInBible.Droid.Resource.Attribute.shadowDrawable;
+			global::com.refractored.monodroidtoolkit.Resource.Attribute.unpinnedDrawable = global::WomenInBible.Droid.Resource.Attribute.unpinnedDrawable;
+			global::com.refractored.monodroidtoolkit.Resource.Color.progress_default_circle_color = global::WomenInBible.Droid.Resource.Color.progress_default_circle_color;
+			global::com.refractored.monodroidtoolkit.Resource.Color.progress_default_progress_color = global::WomenInBible.Droid.Resource.Color.progress_default_progress_color;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_background_dark = global::WomenInBible.Droid.Resource.Color.refractored_background_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_background_holo_dark = global::WomenInBible.Droid.Resource.Color.refractored_background_holo_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_background_holo_light = global::WomenInBible.Droid.Resource.Color.refractored_background_holo_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_background_light = global::WomenInBible.Droid.Resource.Color.refractored_background_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_bright_foreground_dark = global::WomenInBible.Droid.Resource.Color.refractored_bright_foreground_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_bright_foreground_dark_disabled = global::WomenInBible.Droid.Resource.Color.refractored_bright_foreground_dark_disabled;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_bright_foreground_disabled_holo_dark = global::WomenInBible.Droid.Resource.Color.refractored_bright_foreground_disabled_holo_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_bright_foreground_disabled_holo_light = global::WomenInBible.Droid.Resource.Color.refractored_bright_foreground_disabled_holo_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_bright_foreground_holo_dark = global::WomenInBible.Droid.Resource.Color.refractored_bright_foreground_holo_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_bright_foreground_holo_light = global::WomenInBible.Droid.Resource.Color.refractored_bright_foreground_holo_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_bright_foreground_light = global::WomenInBible.Droid.Resource.Color.refractored_bright_foreground_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_dim_foreground_disabled_holo_dark = global::WomenInBible.Droid.Resource.Color.refractored_dim_foreground_disabled_holo_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_dim_foreground_disabled_holo_light = global::WomenInBible.Droid.Resource.Color.refractored_dim_foreground_disabled_holo_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_dim_foreground_holo_dark = global::WomenInBible.Droid.Resource.Color.refractored_dim_foreground_holo_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_dim_foreground_holo_light = global::WomenInBible.Droid.Resource.Color.refractored_dim_foreground_holo_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_highlighted_text_holo_dark = global::WomenInBible.Droid.Resource.Color.refractored_highlighted_text_holo_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_highlighted_text_holo_light = global::WomenInBible.Droid.Resource.Color.refractored_highlighted_text_holo_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_hint_foreground_holo_dark = global::WomenInBible.Droid.Resource.Color.refractored_hint_foreground_holo_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_hint_foreground_holo_light = global::WomenInBible.Droid.Resource.Color.refractored_hint_foreground_holo_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_blue_bright = global::WomenInBible.Droid.Resource.Color.refractored_holo_blue_bright;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_blue_dark = global::WomenInBible.Droid.Resource.Color.refractored_holo_blue_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_blue_light = global::WomenInBible.Droid.Resource.Color.refractored_holo_blue_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_green_dark = global::WomenInBible.Droid.Resource.Color.refractored_holo_green_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_green_light = global::WomenInBible.Droid.Resource.Color.refractored_holo_green_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_orange_dark = global::WomenInBible.Droid.Resource.Color.refractored_holo_orange_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_orange_light = global::WomenInBible.Droid.Resource.Color.refractored_holo_orange_light;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_purple = global::WomenInBible.Droid.Resource.Color.refractored_holo_purple;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_red_dark = global::WomenInBible.Droid.Resource.Color.refractored_holo_red_dark;
+			global::com.refractored.monodroidtoolkit.Resource.Color.refractored_holo_red_light = global::WomenInBible.Droid.Resource.Color.refractored_holo_red_light;
+			global::com.refractored.monodroidtoolkit.Resource.Dimension.progress_inner_size = global::WomenInBible.Droid.Resource.Dimension.progress_inner_size;
+			global::com.refractored.monodroidtoolkit.Resource.Drawable.pin_progress_pinned = global::WomenInBible.Droid.Resource.Drawable.pin_progress_pinned;
+			global::com.refractored.monodroidtoolkit.Resource.Drawable.pin_progress_shadow = global::WomenInBible.Droid.Resource.Drawable.pin_progress_shadow;
+			global::com.refractored.monodroidtoolkit.Resource.Drawable.pin_progress_unpinned = global::WomenInBible.Droid.Resource.Drawable.pin_progress_unpinned;
+			global::com.refractored.monodroidtoolkit.Resource.Drawable.scrubber_control_normal_holo = global::WomenInBible.Droid.Resource.Drawable.scrubber_control_normal_holo;
+			global::com.refractored.monodroidtoolkit.Resource.Drawable.scrubber_control_pressed_holo = global::WomenInBible.Droid.Resource.Drawable.scrubber_control_pressed_holo;
+			global::com.refractored.monodroidtoolkit.Resource.Id.bottom = global::WomenInBible.Droid.Resource.Id.bottom;
+			global::com.refractored.monodroidtoolkit.Resource.Id.center = global::WomenInBible.Droid.Resource.Id.center;
+			global::com.refractored.monodroidtoolkit.Resource.Id.center_horizontal = global::WomenInBible.Droid.Resource.Id.center_horizontal;
+			global::com.refractored.monodroidtoolkit.Resource.Id.center_vertical = global::WomenInBible.Droid.Resource.Id.center_vertical;
+			global::com.refractored.monodroidtoolkit.Resource.Id.clip = global::WomenInBible.Droid.Resource.Id.clip;
+			global::com.refractored.monodroidtoolkit.Resource.Id.clip_horizontal = global::WomenInBible.Droid.Resource.Id.clip_horizontal;
+			global::com.refractored.monodroidtoolkit.Resource.Id.clip_vertical = global::WomenInBible.Droid.Resource.Id.clip_vertical;
+			global::com.refractored.monodroidtoolkit.Resource.Id.end = global::WomenInBible.Droid.Resource.Id.end;
+			global::com.refractored.monodroidtoolkit.Resource.Id.fill = global::WomenInBible.Droid.Resource.Id.fill;
+			global::com.refractored.monodroidtoolkit.Resource.Id.fill_horizontal = global::WomenInBible.Droid.Resource.Id.fill_horizontal;
+			global::com.refractored.monodroidtoolkit.Resource.Id.fill_vertical = global::WomenInBible.Droid.Resource.Id.fill_vertical;
+			global::com.refractored.monodroidtoolkit.Resource.Id.left = global::WomenInBible.Droid.Resource.Id.left;
+			global::com.refractored.monodroidtoolkit.Resource.Id.right = global::WomenInBible.Droid.Resource.Id.right;
+			global::com.refractored.monodroidtoolkit.Resource.Id.start = global::WomenInBible.Droid.Resource.Id.start;
+			global::com.refractored.monodroidtoolkit.Resource.Id.top = global::WomenInBible.Droid.Resource.Id.top;
+			global::com.refractored.monodroidtoolkit.Resource.Integer.circular_indeterminent_interval = global::WomenInBible.Droid.Resource.Integer.circular_indeterminent_interval;
+			global::com.refractored.monodroidtoolkit.Resource.Integer.progressbutton_indeterminent_interval = global::WomenInBible.Droid.Resource.Integer.progressbutton_indeterminent_interval;
+			global::com.refractored.monodroidtoolkit.Resource.Style.CircularProgressBar = global::WomenInBible.Droid.Resource.Style.CircularProgressBar;
+			global::com.refractored.monodroidtoolkit.Resource.Style.CircularProgressBarLight = global::WomenInBible.Droid.Resource.Style.CircularProgressBarLight;
+			global::com.refractored.monodroidtoolkit.Resource.Style.ProgressButton = global::WomenInBible.Droid.Resource.Style.ProgressButton;
+			global::com.refractored.monodroidtoolkit.Resource.Style.ProgressButton_Pin = global::WomenInBible.Droid.Resource.Style.ProgressButton_Pin;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_gravity = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_gravity;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_indeterminate = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_indeterminate;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_indeterminate_interval = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_indeterminate_interval;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_marker_progress = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_marker_progress;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_progress = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_progress;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_progress_background_color = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_progress_background_color;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_progress_color = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_progress_color;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.HoloCircularProgressBar_circular_stroke_width = global::WomenInBible.Droid.Resource.Styleable.HoloCircularProgressBar_circular_stroke_width;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton = global::WomenInBible.Droid.Resource.Styleable.ProgressButton;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_android_clickable = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_android_clickable;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_android_focusable = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_android_focusable;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_android_selectableItemBackground = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_android_selectableItemBackground;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_circleColor = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_circleColor;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_indeterminate = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_indeterminate;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_indeterminate_interval = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_indeterminate_interval;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_innerSize = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_innerSize;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_max = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_max;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_pinned = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_pinned;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_pinnedDrawable = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_pinnedDrawable;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_progress = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_progress;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_progressColor = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_progressColor;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_shadowDrawable = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_shadowDrawable;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.ProgressButton_unpinnedDrawable = global::WomenInBible.Droid.Resource.Styleable.ProgressButton_unpinnedDrawable;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.Theme = global::WomenInBible.Droid.Resource.Styleable.Theme;
+			global::com.refractored.monodroidtoolkit.Resource.Styleable.Theme_circularProgressBarStyle = global::WomenInBible.Droid.Resource.Styleable.Theme_circularProgressBarStyle;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::WomenInBible.Droid.Resource.String.ApplicationName;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::WomenInBible.Droid.Resource.String.Hello;
 		}
@@ -33,12 +138,197 @@ namespace WomenInBible.Droid
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010003
+			public const int circleColor = 2130771971;
+			
+			// aapt resource value: 0x7f010014
+			public const int circularProgressBarStyle = 2130771988;
+			
+			// aapt resource value: 0x7f01000c
+			public const int circular_gravity = 2130771980;
+			
+			// aapt resource value: 0x7f010012
+			public const int circular_indeterminate = 2130771986;
+			
+			// aapt resource value: 0x7f010013
+			public const int circular_indeterminate_interval = 2130771987;
+			
+			// aapt resource value: 0x7f01000f
+			public const int circular_marker_progress = 2130771983;
+			
+			// aapt resource value: 0x7f01000e
+			public const int circular_progress = 2130771982;
+			
+			// aapt resource value: 0x7f010011
+			public const int circular_progress_background_color = 2130771985;
+			
+			// aapt resource value: 0x7f010010
+			public const int circular_progress_color = 2130771984;
+			
+			// aapt resource value: 0x7f01000d
+			public const int circular_stroke_width = 2130771981;
+			
+			// aapt resource value: 0x7f01000a
+			public const int indeterminate = 2130771978;
+			
+			// aapt resource value: 0x7f01000b
+			public const int indeterminate_interval = 2130771979;
+			
+			// aapt resource value: 0x7f010008
+			public const int innerSize = 2130771976;
+			
+			// aapt resource value: 0x7f010002
+			public const int max = 2130771970;
+			
+			// aapt resource value: 0x7f010009
+			public const int pinned = 2130771977;
+			
+			// aapt resource value: 0x7f010005
+			public const int pinnedDrawable = 2130771973;
+			
+			// aapt resource value: 0x7f010001
+			public const int progress = 2130771969;
+			
+			// aapt resource value: 0x7f010000
+			public const int progressButtonStyle = 2130771968;
+			
+			// aapt resource value: 0x7f010004
+			public const int progressColor = 2130771972;
+			
+			// aapt resource value: 0x7f010007
+			public const int shadowDrawable = 2130771975;
+			
+			// aapt resource value: 0x7f010006
+			public const int unpinnedDrawable = 2130771974;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
 			private Attribute()
+			{
+			}
+		}
+		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int progress_default_circle_color = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int progress_default_progress_color = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int refractored_background_dark = 2130968578;
+			
+			// aapt resource value: 0x7f040007
+			public const int refractored_background_holo_dark = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int refractored_background_holo_light = 2130968584;
+			
+			// aapt resource value: 0x7f040003
+			public const int refractored_background_light = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int refractored_bright_foreground_dark = 2130968580;
+			
+			// aapt resource value: 0x7f040006
+			public const int refractored_bright_foreground_dark_disabled = 2130968582;
+			
+			// aapt resource value: 0x7f04000b
+			public const int refractored_bright_foreground_disabled_holo_dark = 2130968587;
+			
+			// aapt resource value: 0x7f04000c
+			public const int refractored_bright_foreground_disabled_holo_light = 2130968588;
+			
+			// aapt resource value: 0x7f040009
+			public const int refractored_bright_foreground_holo_dark = 2130968585;
+			
+			// aapt resource value: 0x7f04000a
+			public const int refractored_bright_foreground_holo_light = 2130968586;
+			
+			// aapt resource value: 0x7f040005
+			public const int refractored_bright_foreground_light = 2130968581;
+			
+			// aapt resource value: 0x7f04000e
+			public const int refractored_dim_foreground_disabled_holo_dark = 2130968590;
+			
+			// aapt resource value: 0x7f040011
+			public const int refractored_dim_foreground_disabled_holo_light = 2130968593;
+			
+			// aapt resource value: 0x7f04000d
+			public const int refractored_dim_foreground_holo_dark = 2130968589;
+			
+			// aapt resource value: 0x7f040010
+			public const int refractored_dim_foreground_holo_light = 2130968592;
+			
+			// aapt resource value: 0x7f040013
+			public const int refractored_highlighted_text_holo_dark = 2130968595;
+			
+			// aapt resource value: 0x7f040014
+			public const int refractored_highlighted_text_holo_light = 2130968596;
+			
+			// aapt resource value: 0x7f04000f
+			public const int refractored_hint_foreground_holo_dark = 2130968591;
+			
+			// aapt resource value: 0x7f040012
+			public const int refractored_hint_foreground_holo_light = 2130968594;
+			
+			// aapt resource value: 0x7f04001e
+			public const int refractored_holo_blue_bright = 2130968606;
+			
+			// aapt resource value: 0x7f040018
+			public const int refractored_holo_blue_dark = 2130968600;
+			
+			// aapt resource value: 0x7f040015
+			public const int refractored_holo_blue_light = 2130968597;
+			
+			// aapt resource value: 0x7f040019
+			public const int refractored_holo_green_dark = 2130968601;
+			
+			// aapt resource value: 0x7f040016
+			public const int refractored_holo_green_light = 2130968598;
+			
+			// aapt resource value: 0x7f04001d
+			public const int refractored_holo_orange_dark = 2130968605;
+			
+			// aapt resource value: 0x7f04001c
+			public const int refractored_holo_orange_light = 2130968604;
+			
+			// aapt resource value: 0x7f04001b
+			public const int refractored_holo_purple = 2130968603;
+			
+			// aapt resource value: 0x7f04001a
+			public const int refractored_holo_red_dark = 2130968602;
+			
+			// aapt resource value: 0x7f040017
+			public const int refractored_holo_red_light = 2130968599;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int progress_inner_size = 2131034112;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
 			{
 			}
 		}
@@ -236,28 +526,43 @@ namespace WomenInBible.Droid
 			public const int pause_32 = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int plan_32 = 2130837567;
+			public const int pin_progress_pinned = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int plus_32 = 2130837568;
+			public const int pin_progress_shadow = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int rewind_32 = 2130837569;
+			public const int pin_progress_unpinned = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int ringtone_32 = 2130837570;
+			public const int plan_32 = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int set_date_32 = 2130837571;
+			public const int plus_32 = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int set_time_32 = 2130837572;
+			public const int rewind_32 = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int settings_32 = 2130837573;
+			public const int ringtone_32 = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int volume_32 = 2130837574;
+			public const int scrubber_control_normal_holo = 2130837574;
+			
+			// aapt resource value: 0x7f020047
+			public const int scrubber_control_pressed_holo = 2130837575;
+			
+			// aapt resource value: 0x7f020048
+			public const int set_date_32 = 2130837576;
+			
+			// aapt resource value: 0x7f020049
+			public const int set_time_32 = 2130837577;
+			
+			// aapt resource value: 0x7f02004a
+			public const int settings_32 = 2130837578;
+			
+			// aapt resource value: 0x7f02004b
+			public const int volume_32 = 2130837579;
 			
 			static Drawable()
 			{
@@ -265,6 +570,83 @@ namespace WomenInBible.Droid
 			}
 			
 			private Drawable()
+			{
+			}
+		}
+		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f080000
+			public const int bottom = 2131230720;
+			
+			// aapt resource value: 0x7f080001
+			public const int center = 2131230721;
+			
+			// aapt resource value: 0x7f080002
+			public const int center_horizontal = 2131230722;
+			
+			// aapt resource value: 0x7f080003
+			public const int center_vertical = 2131230723;
+			
+			// aapt resource value: 0x7f080004
+			public const int clip = 2131230724;
+			
+			// aapt resource value: 0x7f080005
+			public const int clip_horizontal = 2131230725;
+			
+			// aapt resource value: 0x7f080006
+			public const int clip_vertical = 2131230726;
+			
+			// aapt resource value: 0x7f080007
+			public const int end = 2131230727;
+			
+			// aapt resource value: 0x7f080008
+			public const int fill = 2131230728;
+			
+			// aapt resource value: 0x7f080009
+			public const int fill_horizontal = 2131230729;
+			
+			// aapt resource value: 0x7f08000a
+			public const int fill_vertical = 2131230730;
+			
+			// aapt resource value: 0x7f08000b
+			public const int left = 2131230731;
+			
+			// aapt resource value: 0x7f08000c
+			public const int right = 2131230732;
+			
+			// aapt resource value: 0x7f08000d
+			public const int start = 2131230733;
+			
+			// aapt resource value: 0x7f08000e
+			public const int top = 2131230734;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
+		public partial class Integer
+		{
+			
+			// aapt resource value: 0x7f060001
+			public const int circular_indeterminent_interval = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int progressbutton_indeterminent_interval = 2131099648;
+			
+			static Integer()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Integer()
 			{
 			}
 		}
@@ -291,8 +673,20 @@ namespace WomenInBible.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int Mono_Android_Theme_Splash = 2130968576;
+			// aapt resource value: 0x7f070002
+			public const int CircularProgressBar = 2131165186;
+			
+			// aapt resource value: 0x7f070003
+			public const int CircularProgressBarLight = 2131165187;
+			
+			// aapt resource value: 0x7f070004
+			public const int Mono_Android_Theme_Splash = 2131165188;
+			
+			// aapt resource value: 0x7f070000
+			public const int ProgressButton = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int ProgressButton_Pin = 2131165185;
 			
 			static Style()
 			{
@@ -300,6 +694,117 @@ namespace WomenInBible.Droid
 			}
 			
 			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] HoloCircularProgressBar = new int[] {
+					2130771980,
+					2130771981,
+					2130771982,
+					2130771983,
+					2130771984,
+					2130771985,
+					2130771986,
+					2130771987};
+			
+			// aapt resource value: 0
+			public const int HoloCircularProgressBar_circular_gravity = 0;
+			
+			// aapt resource value: 6
+			public const int HoloCircularProgressBar_circular_indeterminate = 6;
+			
+			// aapt resource value: 7
+			public const int HoloCircularProgressBar_circular_indeterminate_interval = 7;
+			
+			// aapt resource value: 3
+			public const int HoloCircularProgressBar_circular_marker_progress = 3;
+			
+			// aapt resource value: 2
+			public const int HoloCircularProgressBar_circular_progress = 2;
+			
+			// aapt resource value: 5
+			public const int HoloCircularProgressBar_circular_progress_background_color = 5;
+			
+			// aapt resource value: 4
+			public const int HoloCircularProgressBar_circular_progress_color = 4;
+			
+			// aapt resource value: 1
+			public const int HoloCircularProgressBar_circular_stroke_width = 1;
+			
+			public static int[] ProgressButton = new int[] {
+					16842970,
+					16842981,
+					16843534,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973,
+					2130771974,
+					2130771975,
+					2130771976,
+					2130771977,
+					2130771978,
+					2130771979};
+			
+			// aapt resource value: 1
+			public const int ProgressButton_android_clickable = 1;
+			
+			// aapt resource value: 0
+			public const int ProgressButton_android_focusable = 0;
+			
+			// aapt resource value: 2
+			public const int ProgressButton_android_selectableItemBackground = 2;
+			
+			// aapt resource value: 5
+			public const int ProgressButton_circleColor = 5;
+			
+			// aapt resource value: 12
+			public const int ProgressButton_indeterminate = 12;
+			
+			// aapt resource value: 13
+			public const int ProgressButton_indeterminate_interval = 13;
+			
+			// aapt resource value: 10
+			public const int ProgressButton_innerSize = 10;
+			
+			// aapt resource value: 4
+			public const int ProgressButton_max = 4;
+			
+			// aapt resource value: 11
+			public const int ProgressButton_pinned = 11;
+			
+			// aapt resource value: 7
+			public const int ProgressButton_pinnedDrawable = 7;
+			
+			// aapt resource value: 3
+			public const int ProgressButton_progress = 3;
+			
+			// aapt resource value: 6
+			public const int ProgressButton_progressColor = 6;
+			
+			// aapt resource value: 9
+			public const int ProgressButton_shadowDrawable = 9;
+			
+			// aapt resource value: 8
+			public const int ProgressButton_unpinnedDrawable = 8;
+			
+			public static int[] Theme = new int[] {
+					2130771988};
+			
+			// aapt resource value: 0
+			public const int Theme_circularProgressBarStyle = 0;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

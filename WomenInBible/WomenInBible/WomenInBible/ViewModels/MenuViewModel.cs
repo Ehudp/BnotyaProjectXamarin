@@ -11,25 +11,25 @@ namespace WomenInBible.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
-        public ICommand OpenHomeCommand
-        {
-            get { return new Command(async (arg) => await NavigationManager.NavigateTo(new HomeViewModel())); }
-        }
+        //public ICommand OpenHomeCommand
+        //{
+        //    get { return new Command(async (arg) => await NavigationManager.NavigateTo(new HomeViewModel(), true)); }
+        //}
 
-        public ICommand OpenTehilotCommand
-        {
-            get { return new Command(async (arg) => await NavigationManager.NavigateTo(new TehilotViewModel())); }
-        }
+        //public ICommand OpenTehilotCommand
+        //{
+        //    get { return new Command(async (arg) => await NavigationManager.NavigateTo(new TehilotViewModel(), true)); }
+        //}
 
-        public ICommand OpenWomenListCommand
-        {
-            get
-            {
-                return new Command(async (arg) =>
-                {
-                    await NavigationManager.NavigateTo(new WomenListViewModel { Title = "Test 0" });
-                });
-            }
-        }
+        //public ICommand OpenWomenListCommand
+        //{
+        //    get
+        //    {
+        //        return new Command(async (arg) =>
+        //        {
+        //            await NavigationManager.NavigateTo(new WomenListViewModel { Title = "Test 0" }, true);
+        //        });
+        //    }
+        //}
     }
 }

@@ -4,17 +4,20 @@
              xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
 					   x:Class="WomenInBible.Views.HomeView"
              Title="{Binding Title}"
-             BackgroundImage="{Binding BackgroundImage}" >
+             BackgroundImage="{Binding BackgroundImage}"
+             BackgroundColor="Transparent">
              
   <ContentPage.Resources>
     <ResourceDictionary>
-      <converters:TestConverter x:Key="TestConverter"/>
+      <converters:TestConverter x:Key="TestConverter"/>     
+      <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>        
     </ResourceDictionary>
-  </ContentPage.Resources> 
+  </ContentPage.Resources>  
 
   <Grid VerticalOptions="Fill"
         HorizontalOptions="Fill"
-        Padding="0, 20, 0, 20">
+        Padding="0, 20, 0, 20"
+        BackgroundColor="Transparent">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
@@ -24,7 +27,7 @@
     <Grid.ColumnDefinitions>
       <ColumnDefinition/>
       <ColumnDefinition/>
-    </Grid.ColumnDefinitions>
+    </Grid.ColumnDefinitions>    
 
     <Button Text="{Binding OpenWomenListButtonTitle}"
             Command="{Binding OpenWomenListCommand}"

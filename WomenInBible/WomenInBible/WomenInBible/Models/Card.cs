@@ -6,30 +6,31 @@ using System.Text;
 using System.Threading.Tasks;
 using WomenInBible.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Labs.Data;
 
 namespace WomenInBible.Models
 {
-    public class Card : ViewModelBase, IModel
+    public class Card : ObservableObject, IModel
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        private ImageSource _front;
-        public ImageSource Front
+        private string _front;
+        public string Front
         {
             get { return _front; }
             set { SetProperty(ref _front, value, () => Front); }
         }
 
-        private ImageSource _back;
-        public ImageSource Back
+        private string _back;
+        public string Back
         {
             get { return _back; }
             set { SetProperty(ref _back, value, () => Back); }
         }
 
-        private ImageSource _insight;
-        public ImageSource Insight
+        private string _insight;
+        public string Insight
         {
             get { return _insight; }
             set { SetProperty(ref _insight, value, () => Insight); }

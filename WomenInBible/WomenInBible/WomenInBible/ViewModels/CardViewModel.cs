@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WomenInBible.Models;
+using Xamarin.Forms;
 
 namespace WomenInBible.ViewModels
 {
@@ -14,11 +15,11 @@ namespace WomenInBible.ViewModels
         {
             get { return _card; }
             set { SetProperty(ref _card, value, () => CurrentCard); }
-        }
+        }        
 
-        public CardViewModel(Card card)
+        protected override void ParametersReceived(Dictionary<string, object> navigationParameters)
         {
-            CurrentCard = card;
+            CurrentCard = (Card)navigationParameters["Card"];
         }
     }
 }
