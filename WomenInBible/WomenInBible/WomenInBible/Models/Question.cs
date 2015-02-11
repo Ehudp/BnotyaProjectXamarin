@@ -21,20 +21,14 @@ namespace WomenInBible.Models
         {
             get { return _content; }
             set { SetProperty(ref _content, value, () => Content); }
-        }
+        }        
 
         private ObservableCollection<Answer> _answers;
+        [Ignore]
         public ObservableCollection<Answer> Answers
         {
             get { return _answers; }
             set { SetProperty(ref _answers, value, () => Answers); }
-        }
-
-        private int[] _answerIds;
-        public int[] AnswerIds
-        {
-            get { return _answerIds; }
-            set { SetProperty(ref _answerIds, value, () => AnswerIds); }
         }
 
         private int _correctAnswerId;
@@ -47,9 +41,7 @@ namespace WomenInBible.Models
         public void FillAllProperties<T>(T item)
         {
             var question = item as Question;
-            Content = question.Content;
-            Answers = question.Answers;
-            AnswerIds = question.AnswerIds;
+            Content = question.Content;            
             CorrectAnswerId = question.CorrectAnswerId;
         }        
     }

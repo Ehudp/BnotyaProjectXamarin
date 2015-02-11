@@ -41,7 +41,7 @@ namespace WomenInBible.ViewModels
                 return _makeFavoriteCommand ?? (_makeFavoriteCommand = new Command(
                   async () =>
                 {
-                    CurrentInsight.IsFavorite = true;
+                    CurrentInsight.IsFavorite = 1;
                     await IoC.Resolve<DatabaseManager>().UpdateAsync<Insight>(CurrentInsight, (ins) => ins.Id == CurrentInsight.Id);
                     await Navigation.PopAsync();
                 }, () => true));

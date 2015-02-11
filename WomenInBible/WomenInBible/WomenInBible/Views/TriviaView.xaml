@@ -16,8 +16,8 @@
       Spacing = "10"
       Padding = "10">
     <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Center" />
-    <Label Text="{Binding CurrentQuestion.Content, Converter={StaticResource TestConverter}}" VerticalOptions="Center" HorizontalOptions="Center" />
-    <custom:CustomListView ItemsSource="{Binding CurrentQuestion.Answers}"
+    <Label Text="{Binding CurrentQuestion.Content}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <custom:CustomListView ItemsSource="{Binding CurrentAnswers}"
                     SelectedItem="{Binding SelectedAnswer}"
                     ItemClickCommand="{Binding AnswerSelectedCommand}"
                     x:Name="lst"

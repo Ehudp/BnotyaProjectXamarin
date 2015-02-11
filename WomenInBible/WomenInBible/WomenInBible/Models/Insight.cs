@@ -23,8 +23,8 @@ namespace WomenInBible.Models
             set { SetProperty(ref _name, value, () => Name); }
         }
 
-        private bool _isFavorite;
-        public bool IsFavorite
+        private int _isFavorite;
+        public int IsFavorite
         {
             get { return _isFavorite; }
             set { SetProperty(ref _isFavorite, value, () => IsFavorite); }

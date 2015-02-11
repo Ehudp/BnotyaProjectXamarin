@@ -48,17 +48,10 @@ namespace WomenInBible
 
         private void InitApp()
         {
-            var resolverContainer = IoC.Container;
-
             if (!Resolver.IsSet)
             {
-                Resolver.SetResolver(resolverContainer.GetResolver());
-            }
-
-
-            IoC.Register<InsightService>(new InsightService());
-            IoC.Register<QuestionService>(new QuestionService());
-            IoC.Register<DatabaseManager>(new DatabaseManager());
+                Resolver.SetResolver(IoC.Container.GetResolver());
+            }           
 
             ViewFactory.Register<HomeView, HomeViewModel>();
             ViewFactory.Register<WomenListView, WomenListViewModel>();

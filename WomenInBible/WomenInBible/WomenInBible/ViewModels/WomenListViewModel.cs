@@ -77,7 +77,7 @@ namespace WomenInBible.ViewModels
                   async () =>
                   {
                       var navParam = new Dictionary<string, object>();
-                      navParam.Add("Card", SelectedWoman.CurrentCard);
+                      navParam.Add("CardId", SelectedWoman.CardId);
                       await ShowViewModel<CardViewModel>(navParam);
                   }, () => true));
             }
@@ -104,37 +104,10 @@ namespace WomenInBible.ViewModels
             SearchPlaceholder = "Search";
             Title = "Women List";
 
-            WomenList = new ObservableCollection<Woman>
-            {
-                new Woman
-                {
-                    Name = "T1",
-                    Icon = "ic_action_search.png"
-                },
-                new Woman
-                {
-                    Name = "T2",
-                    Icon = "ic_action_search.png"                    
-                }
-            };
-
-            CreateCardsAsync();
-        }
-
-        private async Task CreateCardsAsync()
-        {
-            await Task.Run(() =>
-            {
-                for (int i = 1; i <= WomenList.Count; i++)
-                {
-                    WomenList[i - 1].CurrentCard = new Card
-                        {
-                            Front = string.Format("card{0}.png", i),
-                            Back = string.Format("card{0}a.png", i),
-                            Insight = string.Format("card{0}b.png", i)
-                        };
-                }
-            }).ConfigureAwait(false);
+            var result = Task.Run(async () => 
+                await IoC.Resolve<DatabaseManager>().QueryAllAsync<Woman, int>((ins) => ins.Id))
+                .ConfigureAwait(false).GetAwaiter().GetResult(); 
+            WomenList = new ObservableCollection<Woman>(result);
         }
     }
 }

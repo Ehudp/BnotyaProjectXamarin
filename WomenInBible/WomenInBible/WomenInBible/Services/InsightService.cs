@@ -13,7 +13,7 @@ namespace WomenInBible.Services
     {
         public async Task<IEnumerable<Insight>> GetFavoriteInsights()
         {
-            return await IoC.Resolve<DatabaseManager>().QuerySelectedAsync<Insight, string>(x => x.IsFavorite, x => x.Name);
+            return await IoC.Resolve<DatabaseManager>().QuerySelectedAsync<Insight, string>(x => x.IsFavorite > 0, x => x.Name);
         }
     }
 }

@@ -21,10 +21,14 @@ namespace WomenInBible.Models
             set { SetProperty(ref _content, value, () => Content); }
         }
 
+        [Indexed]
+        public int QuestionId { get; set; }
+
         public void FillAllProperties<T>(T item)
         {
             var answer = item as Answer;
             Content = answer.Content;
+            QuestionId = answer.QuestionId;
         }
     }
 }

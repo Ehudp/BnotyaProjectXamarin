@@ -27,33 +27,85 @@ namespace WomenInBible.Managers
 
         public async Task CreateDb() // TODO: For tests only
         {
-            await CreateDataBase();
-            Question question1 = new Question { Content = "Who is the President of US?" };
-            Question question2 = new Question { Content = "Who is the President of Mars?" };
-            Answer answer1 = new Answer { Content = "Yoda" };
-            Answer answer2 = new Answer { Content = "Bibi" };
+            await CreateDataBase();                      
+            
             // Inserting answers in DB
-            answer1.Id = await InsertAsync<Answer>(answer1, x => x.Id == answer1.Id);
-            answer2.Id = await InsertAsync<Answer>(answer2, x => x.Id == answer2.Id);
+            Answer answer1 = await InsertAsync(new Answer { Content = "Yoda" });
+            Answer answer2 = await InsertAsync(new Answer { Content = "Bibi" });
+            Answer answer3 = await InsertAsync(new Answer { Content = "Barak" });
+            Answer answer4 = await InsertAsync(new Answer { Content = "Obama" });
+            
             // Inserting questions in DB
-            await IoC.Resolve<QuestionService>().CreateQuestion(question1, new List<Answer> { answer1, answer2 }, answer1.Id);
-            await IoC.Resolve<QuestionService>().CreateQuestion(question2, new List<Answer> { answer1, answer2 }, answer2.Id);
+            await IoC.Resolve<QuestionService>()
+                .CreateQuestion(new Question { Content = "Who is the President of US?" }, new[] { answer1, answer2 }, answer1.Id);
+            await IoC.Resolve<QuestionService>()
+                .CreateQuestion(new Question { Content = "Who is the President of Mars?" }, new[] { answer3, answer4 }, answer4.Id);
+
+            // Inserting women, cards and insights in DB
+            var womenList = new List<Woman>
+            {
+                new Woman
+                {
+                    Name = "T1",
+                    Icon = "ic_action_search.png"
+                },
+                new Woman
+                {
+                    Name = "T2",
+                    Icon = "ic_action_search.png"                    
+                }
+            };
+
+            for (int i = 1; i <= womenList.Count; i++)
+            {
+                var card = new Card
+                {
+                    Front = string.Format("card{0}.png", i),
+                    Back = string.Format("card{0}a.png", i),
+                    Insight = string.Format("card{0}b.png", i)
+                };
+
+                var insight = new Insight 
+                { 
+                    InsightImage = string.Format("card{0}b.png", i), 
+                    IsFavorite = 0, 
+                    Name = womenList[i - 1].Name 
+                };
+
+                await InsertAsync(card);
+                await InsertAsync(insight);
+                womenList[i - 1].CardId = card.Id;
+                await InsertAsync(womenList[i - 1]);
+            } 
         }
 
-        public async Task CreateDataBase()
+        public async Task CreateDataBase() // TODO: For tests only
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-            await database.CreateTableAsync<Card>();
-            await database.CreateTableAsync<Woman>();            
+
+            await database.DropTableAsync<Card>();
+            await database.DropTableAsync<Woman>();
+            await database.DropTableAsync<Insight>();
+            await database.DropTableAsync<Answer>();
+            await database.DropTableAsync<Question>();
+
+            await database.CreateTableAsync<Card>();            
+            await database.CreateTableAsync<Woman>();
             await database.CreateTableAsync<Insight>();
             await database.CreateTableAsync<Answer>();
             await database.CreateTableAsync<Question>();
         }
 
-        public async Task<T> QueryAsync<T>(Expression<Func<T, bool>> predicate) where T : new()
+        public async Task<T> GetAsync<T>(int id) where T : new()
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-            return await database.Table<T>().Where(predicate).FirstOrDefaultAsync();
+            return await database.GetAsync<T>(id);
+        }
+
+        public async Task<T> GetAsync<T>(Expression<Func<T, bool>> predicate) where T : new()
+        {
+            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());            
+            return await database.GetAsync<T>(predicate);
         }
 
         public async Task<List<T>> QuerySelectedAsync<T, TValue>(Expression<Func<T, bool>> predicate, Expression<Func<T, TValue>> orderByFunc)
@@ -69,30 +121,42 @@ namespace WomenInBible.Managers
             return await database.Table<T>().OrderBy(orderByFunc).ToListAsync();
         }
 
-        public async Task<int> InsertAsync<T>(T item, Expression<Func<T, bool>> predicate) where T : new()
+        public async Task<T> InsertAsync<T>(T item) where T : new()
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-            return await database.InsertAsync(item);
+            await database.InsertAsync(item);
+            return item; 
         }
 
-        public async Task<int> UpdateAsync<T>(T item, Expression<Func<T, bool>> predicate) where T : IModel, new()
+        public async Task<T> UpdateAsync<T>(T item, Expression<Func<T, bool>> predicate) where T : IModel, new()
         {
-            T current = await QueryAsync(predicate);
+            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
+            T current = await database.GetAsync<T>(predicate);
             if (current != null)
             {
-                current.FillAllProperties(item);
-                var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-                return await database.UpdateAsync(current);
+                current.FillAllProperties(item);                
+                await database.UpdateAsync(current);                
             }
-            return 0;
+            else
+            {
+                current = item;
+                await database.InsertAsync(current);  
+            }
+            return current;           
         }
 
-        public async Task DeleteAsync<T>(T item, Expression<Func<T, bool>> predicate) where T : new()
+        public async Task DeleteAsync<T>(int id) where T : new()
         {
-            T current = await QueryAsync(predicate);
+            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
+            await database.DeleteAsync(id);
+        }
+
+        public async Task DeleteAsync<T>(Expression<Func<T, bool>> predicate) where T : new()
+        {
+            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
+            T current = await database.GetAsync<T>(predicate);
             if (current != null)
-            {
-                var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
+            {                
                 await database.DeleteAsync(current);
             }
         }

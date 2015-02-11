@@ -17,11 +17,11 @@
       </Grid.ColumnDefinitions>
       <Button Text="{Binding UndoButtonTitle}"
               Command="{Binding UndoCommand}"
-             HorizontalOptions="FillAndExpand"/>
+             HorizontalOptions="FillAndExpand" />
       <Button Text="{Binding OpenRandomInsightButtonTitle}"
               Command="{Binding OpenRandomInsightCommand}"
-               HorizontalOptions="FillAndExpand"
-              Grid.Column="1"/>
+               HorizontalOptions="FillAndExpand"              
+              Grid.Column="1" />
     </Grid>
 
     <custom:CustomListView ItemsSource="{Binding FavoriteInsights}"

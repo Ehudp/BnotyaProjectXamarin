@@ -28,7 +28,14 @@ namespace WomenInBible.ViewModels
         {
             get { return _currentQuestion; }
             set { SetProperty(ref _currentQuestion, value, () => CurrentQuestion); }
-        }        
+        }
+
+        private ObservableCollection<Answer> _currentAnswers;
+        public ObservableCollection<Answer> CurrentAnswers
+        {
+            get { return _currentAnswers; }
+            set { SetProperty(ref _currentAnswers, value, () => CurrentAnswers); }
+        }
 
         private Answer _selectedAnswer;
         public Answer SelectedAnswer
@@ -44,16 +51,16 @@ namespace WomenInBible.ViewModels
             {
                 return _answerSelectedCommand ?? (_answerSelectedCommand = new Command(
                   async () =>
-                {
-                    if (SelectedAnswer.Id == CurrentQuestion.CorrectAnswerId)
-                    {
-                        // TODO: Victory
-                    }
-                    else
-                    {
-                        // TODO: Error
-                    }
-                }, () => true));
+                  {
+                      if (SelectedAnswer.Id == CurrentQuestion.CorrectAnswerId)
+                      {
+                          // TODO: Victory
+                      }
+                      else
+                      {
+                          // TODO: Error
+                      }
+                  }, () => true));
             }
         }
 
@@ -63,9 +70,11 @@ namespace WomenInBible.ViewModels
             Title = "Trivia";
             Task.Run(async () =>
                 {
-                    var list = await IoC.Resolve<DatabaseManager>().QueryAllAsync<Question, int>((question) => question.Id);                    
+                    var list = await IoC.Resolve<DatabaseManager>().QueryAllAsync<Question, int>((question) => question.Id);
                     var randomId = _random.Next(0, list.Count());
-                    CurrentQuestion = list[randomId];                   
+                    CurrentQuestion = list[randomId];
+                    var answers = await IoC.Resolve<QuestionService>().GetAnswersByQuestion(CurrentQuestion);
+                    CurrentAnswers = new ObservableCollection<Answer>(answers);
 
                 }).ConfigureAwait(false);
         }

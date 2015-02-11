@@ -12,12 +12,20 @@ namespace WomenInBible.Services
 {
     public class QuestionService
     {
-        public async Task<int> CreateQuestion(Question question, List<Answer> answers, int correctAnswerId)
+        public async Task<Question> CreateQuestion(Question question, Answer[] answers, int correctAnswerId)
         {
-            question.Answers = new ObservableCollection<Answer>(answers);
-            question.AnswerIds = answers.Select(x => x.Id).ToArray();
+            question.Answers = new ObservableCollection<Answer>();
             question.CorrectAnswerId = correctAnswerId;
-            return await IoC.Resolve<DatabaseManager>().InsertAsync(question, x => x.Id == question.Id);
+            await IoC.Resolve<DatabaseManager>().InsertAsync(question);
+
+            foreach (var answer in answers)
+            {
+                answer.QuestionId = question.Id;                
+                await IoC.Resolve<DatabaseManager>().UpdateAsync(answer, x => x.Id == answer.Id);
+                question.Answers.Add(answer);
+            }            
+
+            return question;
         }
 
         public async Task DeleteQuestion(Question question, bool shouldDeleteAllQuestionsAnswers)
@@ -28,23 +36,16 @@ namespace WomenInBible.Services
             {
                 foreach (var answer in question.Answers)
                 {
-                    await IoC.Resolve<DatabaseManager>().DeleteAsync(answer, x => x.Id == answer.Id);
+                    await IoC.Resolve<DatabaseManager>().DeleteAsync<Answer>(x => x.Id == answer.Id);
                 }
             }
 
-            await IoC.Resolve<DatabaseManager>().DeleteAsync(question, x => x.Id == question.Id);
+            await IoC.Resolve<DatabaseManager>().DeleteAsync<Question>(x => x.Id == question.Id);
         }
 
         public async Task<IEnumerable<Answer>> GetAnswersByQuestion(Question question)
         {
-            var answers = new List<Answer>();
-            foreach (var answerId in question.AnswerIds)
-            {
-                var answer = await IoC.Resolve<DatabaseManager>().QueryAsync<Answer>(x => x.Id == answerId);
-                answers.Add(answer);
-            }
-
-            return answers;
+            return await IoC.Resolve<DatabaseManager>().QuerySelectedAsync<Answer, int>(x => x.QuestionId == question.Id, x => x.Id);            
         }
     }
 }

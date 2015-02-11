@@ -74,7 +74,7 @@ namespace WomenInBible.ViewModels
                 return _deleteFavoriteInsightCommand ?? (_deleteFavoriteInsightCommand = new Command(
                  async () =>
                  {
-                     SelectedFavoriteInsight.IsFavorite = false;
+                     SelectedFavoriteInsight.IsFavorite = 0;
                      await IoC.Resolve<DatabaseManager>()
                          .UpdateAsync<Insight>(SelectedFavoriteInsight, (ins) => ins.Id == SelectedFavoriteInsight.Id);
                      FavoriteInsights.Remove(SelectedFavoriteInsight);

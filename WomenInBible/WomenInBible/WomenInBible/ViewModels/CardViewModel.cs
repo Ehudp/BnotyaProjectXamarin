@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WomenInBible.Managers;
 using WomenInBible.Models;
 using Xamarin.Forms;
 
@@ -17,9 +18,10 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _card, value, () => CurrentCard); }
         }        
 
-        protected override void ParametersReceived(Dictionary<string, object> navigationParameters)
+        protected async override void ParametersReceived(Dictionary<string, object> navigationParameters)
         {
-            CurrentCard = (Card)navigationParameters["Card"];
+            var cardId = (int)navigationParameters["CardId"];
+            CurrentCard = await IoC.Resolve<DatabaseManager>().GetAsync<Card>(x => x.Id == cardId);
         }
     }
 }

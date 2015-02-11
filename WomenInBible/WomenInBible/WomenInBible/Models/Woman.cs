@@ -27,14 +27,7 @@ namespace WomenInBible.Models
         {
             get { return _icon; }
             set { SetProperty(ref _icon, value, () => Icon); }
-        }
-
-        private Card _card;
-        public Card CurrentCard
-        {
-            get { return _card; }
-            set { SetProperty(ref _card, value, () => CurrentCard); }
-        }
+        }        
 
         private int _cardId;
         public int CardId
@@ -47,8 +40,7 @@ namespace WomenInBible.Models
         {
             var woman = item as Woman;
             Name = woman.Name;
-            Icon = woman.Icon;
-            CurrentCard = woman.CurrentCard;
+            Icon = woman.Icon;            
             CardId = woman.CardId;
         }
     }
