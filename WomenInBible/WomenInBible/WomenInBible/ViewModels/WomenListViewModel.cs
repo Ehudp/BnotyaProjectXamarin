@@ -107,7 +107,7 @@ namespace WomenInBible.ViewModels
             var result = Task.Run(async () => 
                 await IoC.Resolve<DatabaseManager>().QueryAllAsync<Woman, int>((ins) => ins.Id))
                 .ConfigureAwait(false).GetAwaiter().GetResult(); 
-            WomenList = new ObservableCollection<Woman>(result);
+            WomenList = new ObservableCollection<Woman>(result);            
         }
     }
 }

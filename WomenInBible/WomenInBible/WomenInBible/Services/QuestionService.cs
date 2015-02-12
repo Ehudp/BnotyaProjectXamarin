@@ -14,38 +14,45 @@ namespace WomenInBible.Services
     {
         public async Task<Question> CreateQuestion(Question question, Answer[] answers, int correctAnswerId)
         {
+            var dbManager = IoC.Resolve<DatabaseManager>();
+
             question.Answers = new ObservableCollection<Answer>();
             question.CorrectAnswerId = correctAnswerId;
-            await IoC.Resolve<DatabaseManager>().InsertAsync(question);
+            await dbManager.InsertAsync(question);
 
             foreach (var answer in answers)
             {
-                answer.QuestionId = question.Id;                
-                await IoC.Resolve<DatabaseManager>().UpdateAsync(answer, x => x.Id == answer.Id);
+                answer.QuestionId = question.Id;
+                await dbManager.UpdateAsync(answer, x => x.Id == answer.Id);
                 question.Answers.Add(answer);
-            }            
+            }
 
             return question;
         }
 
         public async Task DeleteQuestion(Question question, bool shouldDeleteAllQuestionsAnswers)
         {
+            var dbManager = IoC.Resolve<DatabaseManager>();
+
             // before deleting a question
             // check if answers under it should also be deleted
             if (shouldDeleteAllQuestionsAnswers)
             {
-                foreach (var answer in question.Answers)
-                {
-                    await IoC.Resolve<DatabaseManager>().DeleteAsync<Answer>(x => x.Id == answer.Id);
-                }
+                var answers = await dbManager.QuerySelectedAsync<Answer>(x => x.QuestionId == question.Id);
+                Parallel.ForEach(answers, async answer => await dbManager.DeleteAsync<Answer>(answer.Id));
+
+                //foreach (var answer in answers)
+                //{
+                //    await dbManager.DeleteAsync<Answer>(answer.Id);
+                //}
             }
 
-            await IoC.Resolve<DatabaseManager>().DeleteAsync<Question>(x => x.Id == question.Id);
+            await dbManager.DeleteAsync<Question>(question.Id);
         }
 
         public async Task<IEnumerable<Answer>> GetAnswersByQuestion(Question question)
         {
-            return await IoC.Resolve<DatabaseManager>().QuerySelectedAsync<Answer, int>(x => x.QuestionId == question.Id, x => x.Id);            
+            return await IoC.Resolve<DatabaseManager>().QuerySelectedAsync<Answer, int>(x => x.QuestionId == question.Id, x => x.Id);
         }
     }
 }

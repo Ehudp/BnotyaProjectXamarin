@@ -21,7 +21,7 @@ namespace WomenInBible.ViewModels
         protected async override void ParametersReceived(Dictionary<string, object> navigationParameters)
         {
             var cardId = (int)navigationParameters["CardId"];
-            CurrentCard = await IoC.Resolve<DatabaseManager>().GetAsync<Card>(x => x.Id == cardId);
+            CurrentCard = await IoC.Resolve<DatabaseManager>().FindAsync<Card>(x => x.Id == cardId);
         }
     }
 }

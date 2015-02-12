@@ -83,29 +83,33 @@ namespace WomenInBible.Managers
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
 
-            await database.DropTableAsync<Card>();
-            await database.DropTableAsync<Woman>();
-            await database.DropTableAsync<Insight>();
-            await database.DropTableAsync<Answer>();
-            await database.DropTableAsync<Question>();
+            List<Task> tasks = new List<Task>();
 
-            await database.CreateTableAsync<Card>();            
-            await database.CreateTableAsync<Woman>();
-            await database.CreateTableAsync<Insight>();
-            await database.CreateTableAsync<Answer>();
-            await database.CreateTableAsync<Question>();
+            tasks.Add(database.DropTableAsync<Card>());
+            tasks.Add(database.DropTableAsync<Woman>());
+            tasks.Add(database.DropTableAsync<Insight>());
+            tasks.Add(database.DropTableAsync<Answer>());
+            tasks.Add(database.DropTableAsync<Question>());
+
+            tasks.Add(database.CreateTableAsync<Card>());
+            tasks.Add(database.CreateTableAsync<Woman>());
+            tasks.Add(database.CreateTableAsync<Insight>());
+            tasks.Add(database.CreateTableAsync<Answer>());
+            tasks.Add(database.CreateTableAsync<Question>());
+
+            await Task.WhenAll(tasks);             
         }
 
-        public async Task<T> GetAsync<T>(int id) where T : new()
+        public async Task<T> FindAsync<T>(int id) where T : new()
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-            return await database.GetAsync<T>(id);
+            return await database.FindAsync<T>(id);
         }
 
-        public async Task<T> GetAsync<T>(Expression<Func<T, bool>> predicate) where T : new()
+        public async Task<T> FindAsync<T>(Expression<Func<T, bool>> predicate) where T : new()
         {
-            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());            
-            return await database.GetAsync<T>(predicate);
+            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
+            return await database.FindAsync<T>(predicate);
         }
 
         public async Task<List<T>> QuerySelectedAsync<T, TValue>(Expression<Func<T, bool>> predicate, Expression<Func<T, TValue>> orderByFunc)
@@ -115,10 +119,22 @@ namespace WomenInBible.Managers
             return await database.Table<T>().Where(predicate).OrderBy<TValue>(orderByFunc).ToListAsync();
         }
 
+        public async Task<List<T>> QuerySelectedAsync<T>(Expression<Func<T, bool>> predicate) where T : new()
+        {
+            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
+            return await database.Table<T>().Where(predicate).ToListAsync();
+        }
+
         public async Task<List<T>> QueryAllAsync<T, TValue>(Expression<Func<T, TValue>> orderByFunc) where T : new()
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
             return await database.Table<T>().OrderBy(orderByFunc).ToListAsync();
+        }
+
+        public async Task<List<T>> QueryAllAsync<T>() where T : new()
+        {
+            var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
+            return await database.Table<T>().ToListAsync();
         }
 
         public async Task<T> InsertAsync<T>(T item) where T : new()
@@ -131,7 +147,7 @@ namespace WomenInBible.Managers
         public async Task<T> UpdateAsync<T>(T item, Expression<Func<T, bool>> predicate) where T : IModel, new()
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-            T current = await database.GetAsync<T>(predicate);
+            T current = await database.FindAsync<T>(predicate);
             if (current != null)
             {
                 current.FillAllProperties(item);                
@@ -148,17 +164,21 @@ namespace WomenInBible.Managers
         public async Task DeleteAsync<T>(int id) where T : new()
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-            await database.DeleteAsync(id);
+            T current = await database.FindAsync<T>(id);
+            if (current != null)
+            {
+                await database.DeleteAsync(id);
+            }
         }
 
         public async Task DeleteAsync<T>(Expression<Func<T, bool>> predicate) where T : new()
         {
             var database = new SQLiteAsyncConnection(DependencyService.Get<ISQLite>().GetConnectionDelegate());
-            T current = await database.GetAsync<T>(predicate);
+            T current = await database.FindAsync<T>(predicate);
             if (current != null)
             {                
                 await database.DeleteAsync(current);
             }
-        }
+        }        
     }
 }
