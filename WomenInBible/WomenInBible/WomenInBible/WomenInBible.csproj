@@ -41,8 +41,10 @@
     <Compile Include="Converters\TestConverter.cs" />
     <Compile Include="CustomControls\Timer.cs" />
     <Compile Include="CustomViews\CircularProgress.cs" />
+    <Compile Include="CustomViews\CustomEntry.cs" />
     <Compile Include="CustomViews\CustomListView.cs" />
     <Compile Include="CustomViews\CustomMenuItem.cs" />
+    <Compile Include="CustomViews\CustomSearchBar.cs" />
     <Compile Include="CustomViews\MenuCell.cs" />
     <Compile Include="CustomViews\MenuHeader.cs" />
     <Compile Include="CustomViews\MenuHeaderCell.cs" />
@@ -51,7 +53,9 @@
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Managers\DatabaseManager.cs" />
+    <Compile Include="Managers\ISettings.cs" />
     <Compile Include="Managers\ISQLite.cs" />
+    <Compile Include="Managers\SettingsManager.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\IModel.cs" />
@@ -66,8 +70,9 @@
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\InsightListViewModel.cs" />
     <Compile Include="ViewModels\InsightViewModel.cs" />
-    <Compile Include="ViewModels\IoC.cs" />
+    <Compile Include="Managers\IoC.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />
     <Compile Include="ViewModels\TehilotViewModel.cs" />
     <Compile Include="ViewModels\TriviaViewModel.cs" />
@@ -84,6 +89,9 @@
     </Compile>
     <Compile Include="Views\InsightView.xaml.cs">
       <DependentUpon>InsightView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SplashView.xaml.cs">
       <DependentUpon>SplashView.xaml</DependentUpon>
@@ -177,6 +185,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\InsightView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SettingsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

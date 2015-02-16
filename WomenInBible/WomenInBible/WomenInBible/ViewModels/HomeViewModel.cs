@@ -62,13 +62,23 @@ namespace WomenInBible.ViewModels
             }
         }
 
+        private ICommand _openSettingsCommand;
+        public ICommand OpenSettingsCommand
+        {
+            get
+            {
+                return _openSettingsCommand ?? (_openSettingsCommand = new Command(
+                  async () => await ShowViewModel<SettingsViewModel>(), () => true));
+            }
+        }
+
         public HomeViewModel()
         {            
             Title = "Home";
             BackgroundImage = "clean_background.png";
             OpenWomenListButtonTitle = "Open Women List";
             OpenTehilotButtonTitle = "Open Tehilot Page";            
-            Task.Run(() => IoC.Resolve<DatabaseManager>().InitializationAwaiter);
+            Task.Run(async () => await IoC.Resolve<DatabaseManager>().InitializationAwaiter);
         }        
     }
 }

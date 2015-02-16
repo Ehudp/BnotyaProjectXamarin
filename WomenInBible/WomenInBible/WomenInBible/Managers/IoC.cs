@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms.Labs.Services;
 
-namespace WomenInBible.ViewModels
+namespace WomenInBible.Managers
 {
     public static class IoC
     {

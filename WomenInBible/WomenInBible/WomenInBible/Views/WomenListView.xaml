@@ -12,9 +12,13 @@
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
 
-    <Entry HorizontalOptions="FillAndExpand"
+    <custom:CustomEntry HorizontalOptions="FillAndExpand"
            Placeholder="{Binding SearchPlaceholder}"
-           Text="{Binding SearchText}"/>
+           Text="{Binding SearchText}"
+           TextChangedCommand="{Binding SearchCommand}"/>
+
+    <Button Text="Clear" HorizontalOptions="End" BackgroundColor="Transparent"
+            Command="{Binding ClearSearchCommand}"/>
 
     <custom:CustomListView ItemsSource="{Binding WomenList}"
                     SelectedItem="{Binding SelectedWoman}"

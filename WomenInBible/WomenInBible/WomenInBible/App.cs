@@ -61,7 +61,8 @@ namespace WomenInBible
             ViewFactory.Register<SplashView, SplashViewModel>();
             ViewFactory.Register<TriviaView, TriviaViewModel>();
             ViewFactory.Register<InsightListView, InsightListViewModel>();
-            ViewFactory.Register<InsightView, InsightViewModel>();                 
+            ViewFactory.Register<InsightView, InsightViewModel>();
+            ViewFactory.Register<SettingsView, SettingsViewModel>();    
         }
     }
 }

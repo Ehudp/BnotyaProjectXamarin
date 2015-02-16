@@ -46,7 +46,7 @@
             Grid.Row="3" />
 
     <Button Text="{Binding OpenTehilotButtonTitle}"
-            Command="{Binding OpenTehilotCommand}"
+            Command="{Binding OpenSettingsCommand}"
            HorizontalOptions="Fill"
             Grid.Row="3" Grid.Column="1"/>
 

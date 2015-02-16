@@ -13,6 +13,8 @@ namespace WomenInBible.ViewModels
 {
     public class WomenListViewModel : ViewModelBase
     {
+        private ObservableCollection<Woman> _originalWomenList;
+
         private string _title;
         public string Title
         {
@@ -83,6 +85,33 @@ namespace WomenInBible.ViewModels
             }
         }
 
+        private ICommand _searchCommand;
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return _searchCommand ?? (_searchCommand = new Command(
+                  (text) =>
+                  {
+                      if (!string.IsNullOrEmpty(SearchText))                      
+                          WomenList = new ObservableCollection<Woman>(
+                              _originalWomenList.Where(woman => woman.Name.ToLower().Contains(SearchText)));
+                      else
+                          WomenList = _originalWomenList;
+                  }, (text) => true));
+            }
+        }
+
+        private ICommand _clearSearchCommand;
+        public ICommand ClearSearchCommand
+        {
+            get
+            {
+                return _clearSearchCommand ?? (_clearSearchCommand = new Command(
+                  () => SearchText = "", () => true));
+            }
+        }        
+
         private ObservableCollection<Woman> _womenList;
         public ObservableCollection<Woman> WomenList
         {
@@ -104,9 +133,11 @@ namespace WomenInBible.ViewModels
             SearchPlaceholder = "Search";
             Title = "Women List";
 
-            var result = Task.Run(async () => 
-                await IoC.Resolve<DatabaseManager>().QueryAllAsync<Woman, int>((ins) => ins.Id))
-                .ConfigureAwait(false).GetAwaiter().GetResult(); 
+            var result = Task.Run(async () =>
+                await IoC.Resolve<DatabaseManager>().QueryAllAsync<Woman, int>(woman => woman.Id))
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+
+            _originalWomenList = new ObservableCollection<Woman>(result); 
             WomenList = new ObservableCollection<Woman>(result);            
         }
     }

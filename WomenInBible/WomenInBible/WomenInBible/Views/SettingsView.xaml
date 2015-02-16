@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
+					   x:Class="WomenInBible.Views.SettingsView"
+             Title="{Binding Title}"
+             BackgroundColor="Transparent">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:TestConverter x:Key="TestConverter"/>
+      <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid VerticalOptions="Fill"
+        HorizontalOptions="Fill"
+        Padding="0, 20, 0, 20"
+        BackgroundColor="Transparent">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <Label Text="{Binding UserProfileTitle}" HorizontalOptions="Fill" />
+    <Entry HorizontalOptions="FillAndExpand"
+           Placeholder="{Binding UserNamePlaceholder}"
+           Text="{Binding UserNameText}"
+           Grid.Row="1"/>
+
+    <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Orientation="Horizontal"
+                 Spacing="20" Padding="0" Grid.Row="2">
+      <Button  HorizontalOptions="StartAndExpand" VerticalOptions="Start"
+              Text="{Binding ApproveUserNameButtonTitle}"
+              Command="{Binding ApproveUserNameCommand}"/>
+      <Button HorizontalOptions="EndAndExpand" VerticalOptions="Start"
+              Text="{Binding ClearUserNameButtonTitle}"
+              Command="{Binding ClearUserNameCommand}"/>
+    </StackLayout>
+
+    <Label Text="{Binding MusicPrefTitle}" HorizontalOptions="Fill" Grid.Row="3" />
+    <Switch Grid.Row="4" HorizontalOptions="Center"/>
+    <Slider Grid.Row="5" HorizontalOptions="FillAndExpand"/>
+
+
+    <Label Text="{Binding NotificationPrefTitle}" HorizontalOptions="Fill"
+           Grid.Row="6" />
+    <Switch Grid.Row="7" HorizontalOptions="Center"/>
+
+  </Grid>
+</ContentPage>
