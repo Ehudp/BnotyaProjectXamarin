@@ -153,6 +153,45 @@ namespace WomenInBible.Managers
             }
         }
 
+        public string UserNameSetting
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("user_name_setting", "");
+            }
+            set
+            {
+                //if value has changed then save it!
+                AppSettings.AddOrUpdateValue("user_name_setting", value);
+            }
+        }
+
+        public bool InitMusicSetting
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("init_music_setting", true);
+            }
+            set
+            {
+                //if value has changed then save it!
+                AppSettings.AddOrUpdateValue("init_music_setting", value);
+            }
+        }
+
+        public bool InitNotificationSetting
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("init_notification_setting", false);
+            }
+            set
+            {
+                //if value has changed then save it!
+                AppSettings.AddOrUpdateValue("init_notification_setting", value);
+            }
+        }
+
         public void Remove(string key)
         {
             AppSettings.Remove(key);

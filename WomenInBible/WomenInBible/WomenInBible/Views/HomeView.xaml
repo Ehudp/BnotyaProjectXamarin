@@ -6,13 +6,12 @@
              Title="{Binding Title}"
              BackgroundImage="{Binding BackgroundImage}"
              BackgroundColor="Transparent">
-             
+
   <ContentPage.Resources>
     <ResourceDictionary>
-      <converters:TestConverter x:Key="TestConverter"/>     
-      <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>        
+      <converters:TestConverter x:Key="TestConverter"/>      
     </ResourceDictionary>
-  </ContentPage.Resources>  
+  </ContentPage.Resources>
 
   <Grid VerticalOptions="Fill"
         HorizontalOptions="Fill"
@@ -27,27 +26,27 @@
     <Grid.ColumnDefinitions>
       <ColumnDefinition/>
       <ColumnDefinition/>
-    </Grid.ColumnDefinitions>    
+    </Grid.ColumnDefinitions>
 
     <Button Text="{Binding OpenWomenListButtonTitle}"
             Command="{Binding OpenWomenListCommand}"
-             HorizontalOptions="Fill"
+            HorizontalOptions="Fill"
             Grid.ColumnSpan="2" />
 
     <Button Text="{Binding OpenTehilotButtonTitle}"
             Command="{Binding OpenTehilotCommand}"
-           HorizontalOptions="Fill"
+            HorizontalOptions="Fill"
             Grid.Row="1"
             Grid.ColumnSpan="2" />
 
     <Button Text="{Binding OpenWomenListButtonTitle}"
             Command="{Binding OpenWomenListCommand}"
-             HorizontalOptions="Fill"
+            HorizontalOptions="Fill"
             Grid.Row="3" />
 
     <Button Text="{Binding OpenTehilotButtonTitle}"
             Command="{Binding OpenSettingsCommand}"
-           HorizontalOptions="Fill"
+            HorizontalOptions="Fill"
             Grid.Row="3" Grid.Column="1"/>
 
   </Grid>

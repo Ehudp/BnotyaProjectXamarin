@@ -13,16 +13,16 @@ namespace WomenInBible.CustomViews
         public static BindableProperty ItemClickCommandProperty = 
             BindableProperty.Create<CustomListView, ICommand>(x => x.ItemClickCommand, null);
 
-        public CustomListView()
-        {
-            this.ItemTapped += this.OnItemTapped;
-        }
-
         public ICommand ItemClickCommand
         {
             get { return (ICommand)this.GetValue(ItemClickCommandProperty); }
             set { this.SetValue(ItemClickCommandProperty, value); }
         }
+
+        public CustomListView()
+        {
+            this.ItemTapped += this.OnItemTapped;
+        }        
 
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {

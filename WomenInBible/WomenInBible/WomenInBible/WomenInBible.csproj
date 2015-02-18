@@ -45,6 +45,7 @@
     <Compile Include="CustomViews\CustomListView.cs" />
     <Compile Include="CustomViews\CustomMenuItem.cs" />
     <Compile Include="CustomViews\CustomSearchBar.cs" />
+    <Compile Include="CustomViews\CustomSwitch.cs" />
     <Compile Include="CustomViews\MenuCell.cs" />
     <Compile Include="CustomViews\MenuHeader.cs" />
     <Compile Include="CustomViews\MenuHeaderCell.cs" />

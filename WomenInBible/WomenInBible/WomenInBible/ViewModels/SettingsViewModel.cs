@@ -50,6 +50,34 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _musicPrefTitle, value, () => MusicPrefTitle); }
         }
 
+        private string _musicSwitchTitle;
+        public string MusicSwitchTitle
+        {
+            get { return _musicSwitchTitle; }
+            set { SetProperty(ref _musicSwitchTitle, value, () => MusicSwitchTitle); }
+        }
+
+        private string _musicSwitchLegend;
+        public string MusicSwitchLegend
+        {
+            get { return _musicSwitchLegend; }
+            set { SetProperty(ref _musicSwitchLegend, value, () => MusicSwitchLegend); }
+        }
+
+        private string _notificationSwitchTitle;
+        public string NotificationSwitchTitle
+        {
+            get { return _notificationSwitchTitle; }
+            set { SetProperty(ref _notificationSwitchTitle, value, () => NotificationSwitchTitle); }
+        }
+
+        private string _notificationSwitchLegend;
+        public string NotificationSwitchLegend
+        {
+            get { return _notificationSwitchLegend; }
+            set { SetProperty(ref _notificationSwitchLegend, value, () => NotificationSwitchLegend); }
+        }
+
         private string _notificationPrefTitle;
         public string NotificationPrefTitle
         {
@@ -71,13 +99,38 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _clearUserNameButtonTitle, value, () => ClearUserNameButtonTitle); }
         }
 
+        private double _musicVolume;
+        public double MusicVolume
+        {
+            get { return _musicVolume; }
+            set 
+            { 
+                SetProperty(ref _musicVolume, value, () => MusicVolume);
+                MusicVolumeDetail = string.Format("Current value is {0}", (int)MusicVolume);
+            }
+        }
+
+        private string _musicVolumeTitle;
+        public string MusicVolumeTitle
+        {
+            get { return _musicVolumeTitle; }
+            set { SetProperty(ref _musicVolumeTitle, value, () => MusicVolumeTitle); }
+        }
+
+        private string _musicVolumeDetail;
+        public string MusicVolumeDetail
+        {
+            get { return _musicVolumeDetail; }
+            set { SetProperty(ref _musicVolumeDetail, value, () => MusicVolumeDetail); }
+        }
+
         private ICommand _approveUserNameCommand;
         public ICommand ApproveUserNameCommand
         {
             get
             {
                 return _approveUserNameCommand ?? (_approveUserNameCommand = new Command(
-                  () => IoC.Resolve<SettingsManager>().StringSetting = UserNameText, 
+                  () => IoC.Resolve<SettingsManager>().UserNameSetting = UserNameText, 
                   () => !string.IsNullOrEmpty(UserNameText)));
             }
         }
@@ -92,15 +145,45 @@ namespace WomenInBible.ViewModels
             }
         }
 
+        private ICommand _initMusicCommand;
+        public ICommand InitMusicCommand
+        {
+            get
+            {
+                return _initMusicCommand ?? (_initMusicCommand = new Command<bool>(
+                  (value) => IoC.Resolve<SettingsManager>().InitMusicSetting = value, 
+                  (value) => true));
+            }
+        }
+
+        private ICommand _initNotificationCommand;
+        public ICommand InitNotificationCommand
+        {
+            get
+            {
+                return _initNotificationCommand ?? (_initNotificationCommand = new Command<bool>(
+                  (value) => IoC.Resolve<SettingsManager>().InitNotificationSetting = value,
+                  (value) => true));
+            }
+        }
+
         public SettingsViewModel()
         {
             Title = "Settings";
             UserProfileTitle = "User Profile";
-            UserNamePlaceholder = "Enter User Name";
+            UserNamePlaceholder = "Set your username";
             MusicPrefTitle = "Music Preferences";
             NotificationPrefTitle = "Notification Preferences";
             ApproveUserNameButtonTitle = "OK";
             ClearUserNameButtonTitle = "Clear";
+            MusicSwitchTitle = "Music";
+            MusicSwitchLegend = "Music On/Off";
+            NotificationSwitchTitle = "Notification";
+            NotificationSwitchLegend = "Notification On/Off";
+            MusicVolumeTitle = "Music Volume";
+            MusicVolumeDetail = string.Format("Current value is {0}", (int)MusicVolume);
+
+            MusicVolume = 50;            
         }
 
         //protected async override void ParametersReceived(Dictionary<string, object> navigationParameters)

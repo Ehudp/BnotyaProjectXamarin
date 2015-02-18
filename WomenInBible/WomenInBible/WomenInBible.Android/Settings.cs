@@ -92,7 +92,6 @@ namespace WomenInBible.Droid
                         value = (Int64)SharedPreferences.GetLong(key, (long)Convert.ToInt64(defaultValue, System.Globalization.CultureInfo.InvariantCulture));
                         break;
                     case TypeCode.String:
-
                         value = SharedPreferences.GetString(key, Convert.ToString(defaultValue));
                         break;
                     case TypeCode.Double:
@@ -141,7 +140,6 @@ namespace WomenInBible.Droid
                             value = new DateTime(ticks);
                         break;
                     default:
-
                         if (defaultValue is Guid)
                         {
                             var outGuid = Guid.Empty;

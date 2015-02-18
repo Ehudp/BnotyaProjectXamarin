@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
+             xmlns:custom="clr-namespace:WomenInBible.CustomViews;assembly=WomenInBible"
 					   x:Class="WomenInBible.Views.SettingsView"
              Title="{Binding Title}"
              BackgroundColor="Transparent">
 
   <ContentPage.Resources>
     <ResourceDictionary>
-      <converters:TestConverter x:Key="TestConverter"/>
-      <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
+      <converters:TestConverter x:Key="TestConverter"/>      
     </ResourceDictionary>
   </ContentPage.Resources>
 
@@ -29,7 +29,11 @@
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
-    <Label Text="{Binding UserProfileTitle}" HorizontalOptions="Fill" />
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Vertical"
+                 Spacing="4" Padding="6">
+      <Label Text="{Binding UserProfileTitle}" HorizontalOptions="StartAndExpand" />
+      <BoxView Color="Gray" HeightRequest="2" Opacity="0.5" HorizontalOptions="FillAndExpand"/>
+    </StackLayout>
     <Entry HorizontalOptions="FillAndExpand"
            Placeholder="{Binding UserNamePlaceholder}"
            Text="{Binding UserNameText}"
@@ -45,14 +49,49 @@
               Command="{Binding ClearUserNameCommand}"/>
     </StackLayout>
 
-    <Label Text="{Binding MusicPrefTitle}" HorizontalOptions="Fill" Grid.Row="3" />
-    <Switch Grid.Row="4" HorizontalOptions="Center"/>
-    <Slider Grid.Row="5" HorizontalOptions="FillAndExpand"/>
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Vertical"
+                 Spacing="4" Padding="6" Grid.Row="3">
+      <Label Text="{Binding MusicPrefTitle}" HorizontalOptions="Fill"/>
+      <BoxView Color="Gray" HeightRequest="2" Opacity="0.5" HorizontalOptions="FillAndExpand"/>      
+    </StackLayout>
+    
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Horizontal"
+                 Spacing="80" Padding="4" Grid.Row="4">
+      <StackLayout VerticalOptions="Start" HorizontalOptions="Start" Orientation="Vertical"
+                Spacing="6" Padding="4">
+        <Label Text="{Binding MusicSwitchTitle}"/>
+        <Label Text="{Binding MusicSwitchLegend}"/>
+      </StackLayout>
+      
+      <custom:CustomSwitch IsToggled="True" ToggledCommand="{Binding InitMusicCommand}"/>
+    </StackLayout>
 
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Horizontal"
+                 Spacing="0" Padding="4" Grid.Row="5">
+       <StackLayout VerticalOptions="Start" HorizontalOptions="Start" Orientation="Vertical"
+                Spacing="6" Padding="4">
+        <Label Text="{Binding MusicVolumeTitle}"/>
+        <Label Text="{Binding MusicVolumeDetail}"/>
+      </StackLayout>
+      <Slider HorizontalOptions="FillAndExpand" Value="{Binding MusicVolume, Mode=TwoWay}" Maximum="100" Minimum="0"/>
+    </StackLayout>
 
-    <Label Text="{Binding NotificationPrefTitle}" HorizontalOptions="Fill"
-           Grid.Row="6" />
-    <Switch Grid.Row="7" HorizontalOptions="Center"/>
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Vertical"
+                    Spacing="4" Padding="6" Grid.Row="6">
+      <Label Text="{Binding NotificationPrefTitle}" HorizontalOptions="Fill" />
+      <BoxView Color="Gray" HeightRequest="2" Opacity="0.5" HorizontalOptions="FillAndExpand"/>
+    </StackLayout>
+
+    <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Horizontal"
+                 Spacing="40" Padding="4" Grid.Row="7">
+      <StackLayout VerticalOptions="Start" HorizontalOptions="Start" Orientation="Vertical"
+                Spacing="6" Padding="4">
+        <Label Text="{Binding NotificationSwitchTitle}"/>
+        <Label Text="{Binding NotificationSwitchLegend}"/>
+      </StackLayout>
+
+      <custom:CustomSwitch  ToggledCommand="{Binding InitNotificationCommand}"/>
+    </StackLayout>
 
   </Grid>
 </ContentPage>

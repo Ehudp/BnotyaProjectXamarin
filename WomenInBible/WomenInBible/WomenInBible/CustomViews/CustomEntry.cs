@@ -15,12 +15,8 @@ namespace WomenInBible.CustomViews
 
         public ICommand TextChangedCommand
         {
-            get { 
-                return (ICommand)this.GetValue(TextChangedCommandProperty);
-            }
-            set { 
-                this.SetValue(TextChangedCommandProperty, value); 
-            }
+            get { return (ICommand)this.GetValue(TextChangedCommandProperty); }
+            set { this.SetValue(TextChangedCommandProperty, value); }
         }
 
         public CustomEntry()
