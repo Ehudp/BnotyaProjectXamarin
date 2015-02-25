@@ -20,34 +20,34 @@ namespace WomenInBible.CustomViews
 
     public class MenuPage : ContentPage
     {
-        private MasterDetailPage _master;
+        private MasterDetailPage _mainPage;
         private NavigationPage _home, _women, _tehilot;
         private TableView _tableView;
 
-        public MenuPage(MasterDetailPage master)
+        public MenuPage(MasterDetailPage mainPage)
         {
-            _master = master;
-
+            _mainPage = mainPage;
+            
             Title = "Bnotya App";
             Icon = "ic_drawer.png";
 
             var section = new TableSection() {
-                new MenuHeaderCell {Text = "Home"},
-				new MenuCell(this) {Text = "Open Home"},				
-				new MenuHeaderCell {Text = "Tehilot"},
-                new MenuCell(this) {Text = "Open Tehilot"},
-                new MenuHeaderCell {Text = "Women"},
-				new MenuCell(this) {Text = "Open Women List"},
-                new MenuCell(this) {Text = "Open Trivia Page"},
-                new MenuCell(this) {Text = "Open Insight List"},
-			};           
+					new MenuHeaderCell {Text = "Home"},
+					new MenuCell(this) {Text = "Open Home"},                                          
+					new MenuHeaderCell {Text = "Tehilot"},
+					new MenuCell(this) {Text = "Open Tehilot"},
+					new MenuHeaderCell {Text = "Women"},
+					new MenuCell(this) {Text = "Open Women List"},
+					new MenuCell(this) {Text = "Open Trivia Page"},
+					new MenuCell(this) {Text = "Open Insight List"},
+					};
 
             var root = new TableRoot() { section };
 
             _tableView = new MenuTableView()
             {
                 Root = root,
-                //				HeaderTemplate = new DataTemplate (typeof(MenuHeader)),
+                // HeaderTemplate = new DataTemplate (typeof(MenuHeader)),
                 Intent = TableIntent.Data,
                 HasUnevenRows = false
             };
@@ -58,28 +58,31 @@ namespace WomenInBible.CustomViews
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Children = { _tableView }
             };
+
+            ToolbarItems.Add(new ToolbarItem("Test", "ic_action_mail.png", () => { }));
+            ToolbarItems.Add(new ToolbarItem("Test", "ic_action_overflow_light.png", async () => await OnActivation()));            
         }
 
         public void Selected(string item)
         {
             switch (item)
-            {                
+            {
                 case "Open Home":
-                    if (_home == null)
-                        _home = new NavigationPage(ViewFactory.CreatePage<HomeViewModel>());
-                    _master.Detail = _home;
-                    App.Navigation = _home.Navigation;
-                    break;                
+                    if (_home == null)                    
+                        _home = new NavigationPage(ViewFactory.CreatePage<HomeViewModel>());                       
+                    _mainPage.Detail = _home;
+                    App.Navigation = _home.Navigation;                    
+                    break;
                 case "Open Tehilot":
                     if (_tehilot == null)
                         _tehilot = new NavigationPage(ViewFactory.CreatePage<TehilotViewModel>());
-                    _master.Detail = _tehilot;
-                    App.Navigation = _tehilot.Navigation;
+                    _mainPage.Detail = _tehilot;
+                    App.Navigation = _tehilot.Navigation;                    
                     break;
                 case "Open Women List":
                     if (_women == null)
                         _women = new NavigationPage(ViewFactory.CreatePage<WomenListViewModel>());
-                    _master.Detail = _women;
+                    _mainPage.Detail = _women;
                     App.Navigation = _women.Navigation;
                     break;
                 case "Open Trivia Page":
@@ -87,8 +90,27 @@ namespace WomenInBible.CustomViews
                 case "Open Insight List":
                     break;
             };
-            _master.IsPresented = false;  // close the slide-out
+            _mainPage.IsPresented = false;  // close the slide-out
+        }
+
+        private async Task OnActivation()
+        {
+            var action = await DisplayActionSheet("Menu", "Cancel", null, "Settings", "About", "Exit");
+            switch(action)
+            {
+                case "Settings":
+                    var nav = new ViewModelNavigation(App.Navigation);
+                    await nav.PushAsync<SettingsViewModel>((x, y)  => {});
+                    break;
+
+                case "About":
+
+                    break;
+
+                case "Exit":
+
+                    break;
+            }
         }
     }
 }
-
