@@ -7,10 +7,10 @@ using MonoTouch.Foundation;
 using WomenInBible.Managers;
 using WomenInBible.iOS;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Settings))]
+[assembly: Xamarin.Forms.Dependency(typeof(Settings_iOS))]
 namespace WomenInBible.iOS
 {
-    public class Settings : ISettings
+    public class Settings_iOS : ISettings
     {
         private readonly object locker = new object();
 

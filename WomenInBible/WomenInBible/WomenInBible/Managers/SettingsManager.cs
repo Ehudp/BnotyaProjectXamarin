@@ -179,6 +179,19 @@ namespace WomenInBible.Managers
             }
         }
 
+        public int MusicVolumeSetting
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("music_volume_setting", 0);
+            }
+            set
+            {
+                //if value has changed then save it!
+                AppSettings.AddOrUpdateValue("music_volume_setting", value);
+            }
+        }
+
         public bool InitNotificationSetting
         {
             get
@@ -191,6 +204,19 @@ namespace WomenInBible.Managers
                 AppSettings.AddOrUpdateValue("init_notification_setting", value);
             }
         }
+
+        public DateTime NotificationTimeSetting
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("notification_time_setting", new DateTime(1, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            }
+            set
+            {
+                //if value has changed then save it!
+                AppSettings.AddOrUpdateValue("notification_time_setting", value);
+            }
+        }        
 
         public void Remove(string key)
         {

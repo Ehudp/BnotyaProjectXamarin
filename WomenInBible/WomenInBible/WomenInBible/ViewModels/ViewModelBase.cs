@@ -40,7 +40,7 @@ namespace WomenInBible.ViewModels
 
         protected async Task ShowViewModelModal<T>(Dictionary<string, object> navigationParameters = null) where T : ViewModelBase
         {
-            await Navigation.PushModalAsync<T>((x, y) => { });
+            await Navigation.PushModalAsync<T>((x, y) => x.ParametersReceived(navigationParameters));
         }
 
         protected async Task ShowViewModel<T>(string key, object value) where T : ViewModelBase
@@ -50,15 +50,10 @@ namespace WomenInBible.ViewModels
 
         protected async Task ShowViewModel<T>(Dictionary<string, object> navigationParameters = null) where T : ViewModelBase
         {
-            //await Navigation.PushAsync(ViewFactory.CreatePage<T>());
-
-            await Navigation.PushAsync<T>((x, y) =>
-            {
-                x.ParametersReceived(navigationParameters);
-            });
+            await Navigation.PushAsync<T>((x, y) => x.ParametersReceived(navigationParameters));
         }
 
-        protected virtual void ParametersReceived(Dictionary<string, object> navigationParameters)
+        public virtual void ParametersReceived(Dictionary<string, object> navigationParameters)
         {
 
         }

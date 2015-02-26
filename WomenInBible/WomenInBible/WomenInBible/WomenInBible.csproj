@@ -50,10 +50,8 @@
     <Compile Include="CustomViews\MenuHeader.cs" />
     <Compile Include="CustomViews\MenuHeaderCell.cs" />
     <Compile Include="CustomViews\MenuPage.cs" />
-    <Compile Include="CustomViews\MenuView.xaml.cs">
-      <DependentUpon>MenuView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Managers\DatabaseManager.cs" />
+    <Compile Include="Managers\IMethods.cs" />
     <Compile Include="Managers\ISettings.cs" />
     <Compile Include="Managers\ISQLite.cs" />
     <Compile Include="Managers\SettingsManager.cs" />
@@ -64,6 +62,7 @@
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Woman.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\NavigationProvider.cs" />
     <Compile Include="Services\InsightService.cs" />
     <Compile Include="Services\QuestionService.cs" />
     <Compile Include="ViewModels\BaseContentPage.cs" />
@@ -72,7 +71,6 @@
     <Compile Include="ViewModels\InsightListViewModel.cs" />
     <Compile Include="ViewModels\InsightViewModel.cs" />
     <Compile Include="Managers\IoC.cs" />
-    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SplashViewModel.cs" />
     <Compile Include="ViewModels\TehilotViewModel.cs" />
@@ -127,12 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TehilotView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CustomViews\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

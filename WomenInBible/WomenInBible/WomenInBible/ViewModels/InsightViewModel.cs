@@ -54,7 +54,7 @@ namespace WomenInBible.ViewModels
             MakeFavoriteButtonTitle = "Make Favorite";
         }
 
-        protected override void ParametersReceived(Dictionary<string, object> navigationParameters)
+        public override void ParametersReceived(Dictionary<string, object> navigationParameters)
         {
             CurrentInsight = (Insight)navigationParameters["Insight"];
         }

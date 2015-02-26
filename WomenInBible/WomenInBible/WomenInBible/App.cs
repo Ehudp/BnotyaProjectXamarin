@@ -55,8 +55,7 @@ namespace WomenInBible
 
             ViewFactory.Register<HomeView, HomeViewModel>();
             ViewFactory.Register<WomenListView, WomenListViewModel>();
-            ViewFactory.Register<TehilotView, TehilotViewModel>();
-            ViewFactory.Register<MenuView, MenuViewModel>();
+            ViewFactory.Register<TehilotView, TehilotViewModel>();            
             ViewFactory.Register<CardView, CardViewModel>();
             ViewFactory.Register<SplashView, SplashViewModel>();
             ViewFactory.Register<TriviaView, TriviaViewModel>();

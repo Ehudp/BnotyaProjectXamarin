@@ -460,109 +460,118 @@ namespace WomenInBible.Droid
 			public const int clean_background = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int clock_32 = 2130837545;
+			public const int clear_dark = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int disable_32 = 2130837546;
+			public const int clear_gray = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int drawer_shadow = 2130837547;
+			public const int clear_light = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int enable_32 = 2130837548;
+			public const int clock_32 = 2130837548;
 			
 			// aapt resource value: 0x7f02002d
-			public const int events_32 = 2130837549;
+			public const int disable_32 = 2130837549;
 			
 			// aapt resource value: 0x7f02002e
-			public const int fast_forward_32 = 2130837550;
+			public const int drawer_shadow = 2130837550;
 			
 			// aapt resource value: 0x7f02002f
-			public const int forward_32 = 2130837551;
+			public const int enable_32 = 2130837551;
 			
 			// aapt resource value: 0x7f020030
-			public const int games_32 = 2130837552;
+			public const int events_32 = 2130837552;
 			
 			// aapt resource value: 0x7f020031
-			public const int ic_action_mail = 2130837553;
+			public const int fast_forward_32 = 2130837553;
 			
 			// aapt resource value: 0x7f020032
-			public const int ic_action_overflow = 2130837554;
+			public const int forward_32 = 2130837554;
 			
 			// aapt resource value: 0x7f020033
-			public const int ic_action_overflow_light = 2130837555;
+			public const int games_32 = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int ic_action_search = 2130837556;
+			public const int ic_action_mail = 2130837556;
 			
 			// aapt resource value: 0x7f020035
-			public const int ic_drawer = 2130837557;
+			public const int ic_action_overflow = 2130837557;
 			
 			// aapt resource value: 0x7f020036
-			public const int ic_launcher = 2130837558;
+			public const int ic_action_overflow_light = 2130837558;
 			
 			// aapt resource value: 0x7f020037
-			public const int Icon = 2130837559;
+			public const int ic_action_search = 2130837559;
 			
 			// aapt resource value: 0x7f020038
-			public const int logo_01 = 2130837560;
+			public const int ic_drawer = 2130837560;
 			
 			// aapt resource value: 0x7f020039
-			public const int magnifying_glass_32 = 2130837561;
+			public const int ic_launcher = 2130837561;
 			
 			// aapt resource value: 0x7f02003a
-			public const int map_pin_32 = 2130837562;
+			public const int Icon = 2130837562;
 			
 			// aapt resource value: 0x7f02003b
-			public const int minus_32 = 2130837563;
+			public const int logo_01 = 2130837563;
 			
 			// aapt resource value: 0x7f02003c
-			public const int monoandroidsplash = 2130837564;
+			public const int magnifying_glass_32 = 2130837564;
 			
 			// aapt resource value: 0x7f02003d
-			public const int options_32 = 2130837565;
+			public const int map_pin_32 = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int pause_32 = 2130837566;
+			public const int minus_32 = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int pin_progress_pinned = 2130837567;
+			public const int monoandroidsplash = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int pin_progress_shadow = 2130837568;
+			public const int options_32 = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int pin_progress_unpinned = 2130837569;
+			public const int pause_32 = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int plan_32 = 2130837570;
+			public const int pin_progress_pinned = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int plus_32 = 2130837571;
+			public const int pin_progress_shadow = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int rewind_32 = 2130837572;
+			public const int pin_progress_unpinned = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int ringtone_32 = 2130837573;
+			public const int plan_32 = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int scrubber_control_normal_holo = 2130837574;
+			public const int plus_32 = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int scrubber_control_pressed_holo = 2130837575;
+			public const int rewind_32 = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int set_date_32 = 2130837576;
+			public const int ringtone_32 = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int set_time_32 = 2130837577;
+			public const int scrubber_control_normal_holo = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int settings_32 = 2130837578;
+			public const int scrubber_control_pressed_holo = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int volume_32 = 2130837579;
+			public const int set_date_32 = 2130837579;
+			
+			// aapt resource value: 0x7f02004c
+			public const int set_time_32 = 2130837580;
+			
+			// aapt resource value: 0x7f02004d
+			public const int settings_32 = 2130837581;
+			
+			// aapt resource value: 0x7f02004e
+			public const int volume_32 = 2130837582;
 			
 			static Drawable()
 			{

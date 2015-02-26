@@ -79,8 +79,10 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SQLite_iOS.cs" />
+    <Compile Include="Implementations\Methods_iOS.cs" />
+    <Compile Include="Implementations\Settings_iOS.cs" />
+    <Compile Include="Implementations\SQLite_iOS.cs" />
+    <Compile Include="Renderers\CustomTimePickerRenderer.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />

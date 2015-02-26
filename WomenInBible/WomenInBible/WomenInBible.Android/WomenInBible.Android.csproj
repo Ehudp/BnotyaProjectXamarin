@@ -100,14 +100,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomGestureListener.cs" />
-    <Compile Include="CustomTabRenderer.cs" />
+    <Compile Include="Renderers\CustomGestureListener.cs" />
+    <Compile Include="Renderers\CustomTabRenderer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Implementations\Methods_Android.cs" />
     <Compile Include="Renderers\CircularProgressRenderer.cs" />
+    <Compile Include="Renderers\CustomTimePickerRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SQLite_Android.cs" />
+    <Compile Include="Implementations\Settings_Android.cs" />
+    <Compile Include="Implementations\SQLite_Android.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -206,6 +208,9 @@
     <AndroidResource Include="Resources\Drawable-xxhdpi\ic_action_search.png" />
     <AndroidResource Include="Resources\Drawable-xxhdpi\ic_drawer.png" />
     <AndroidResource Include="Resources\Drawable-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\clear_dark.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\clear_gray.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\clear_light.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WomenInBible\WomenInBible.csproj">
