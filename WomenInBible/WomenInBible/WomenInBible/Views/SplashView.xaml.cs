@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WomenInBible.CustomViews;
+using WomenInBible.Messages;
 using Xamarin.Forms;
 
 namespace WomenInBible.Views
@@ -13,6 +14,12 @@ namespace WomenInBible.Views
         public SplashView()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Send<ViewAppearedMessage>(new ViewAppearedMessage(), "View appeared");
         }
     }
 }

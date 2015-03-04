@@ -77,8 +77,7 @@ namespace WomenInBible.ViewModels
             Title = "Home";
             BackgroundImage = "clean_background.png";
             OpenWomenListButtonTitle = "Open Women List";
-            OpenTehilotButtonTitle = "Open Tehilot Page";            
-            Task.Run(async () => await IoC.Resolve<DatabaseManager>().InitializationAwaiter);
+            OpenTehilotButtonTitle = "Open Tehilot Page"; 
         }        
     }
 }

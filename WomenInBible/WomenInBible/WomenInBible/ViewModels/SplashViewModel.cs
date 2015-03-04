@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WomenInBible.CustomControls;
 using WomenInBible.Managers;
+using WomenInBible.Messages;
 using Xamarin.Forms;
 
 namespace WomenInBible.ViewModels
@@ -34,12 +36,18 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _isLoading, value, () => IsLoading); }
         }        
 
-        public async void AfterLoading() //TODO: fix this
+        public SplashViewModel()
+        {
+            MessagingCenter.Subscribe<ViewAppearedMessage>(this, "View appeared", 
+                async (message) => await LoadDataAsync());
+        }
+
+        private async Task LoadDataAsync()
         {
             IsLoading = true;
-            await Task.Delay(10000).ConfigureAwait(false);
+            await IoC.Resolve<DatabaseManager>().InitializationAwaiter; // Create DB           
             IsLoading = false;
-            App.SetMainPage();
+            await App.Navigation.PopModalAsync(true);
         }        
     }
 }

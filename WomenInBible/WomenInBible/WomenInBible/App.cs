@@ -7,6 +7,7 @@ using WomenInBible.CustomControls;
 using WomenInBible.CustomViews;
 using WomenInBible.Managers;
 using WomenInBible.Models;
+using WomenInBible.Providers;
 using WomenInBible.Services;
 using WomenInBible.ViewModels;
 using WomenInBible.Views;
@@ -23,28 +24,22 @@ namespace WomenInBible
         public App()
         {
             InitApp();
-            //var vm = new SplashViewModel();
-            //MainPage = vm.ResolveView();
-            //vm.AfterLoading();
 
-            MainPage = GetMainPage();
+            SetMainPage();
+
+            Task.Factory.StartNew(async (param) => 
+                await IoC.Resolve<NavigationProvider>().ShowViewModelModal<SplashViewModel>()
+                , TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        public static MasterDetailPage GetMainPage()
+        private void SetMainPage()
         {
             var rootPage = new MasterDetailPage();
             rootPage.Master = new MenuPage(rootPage);
-            //rootPage.Master = new MenuViewModel().ResolveView();
             rootPage.Detail = new NavigationPage(ViewFactory.CreatePage<HomeViewModel>());
             Navigation = rootPage.Detail.Navigation;
-
-            return rootPage;
-        }
-
-        public static void SetMainPage()
-        {
-            Current.MainPage = GetMainPage();
-        }        
+            MainPage = rootPage;
+        }                       
 
         private void InitApp()
         {

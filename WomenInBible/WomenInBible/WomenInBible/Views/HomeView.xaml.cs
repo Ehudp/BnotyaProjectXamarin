@@ -11,6 +11,6 @@ namespace WomenInBible.Views
         public HomeView()
         {
             InitializeComponent();
-        }
+        }        
     }
 }

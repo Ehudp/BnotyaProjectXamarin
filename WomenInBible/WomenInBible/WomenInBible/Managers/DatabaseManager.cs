@@ -86,26 +86,27 @@ namespace WomenInBible.Managers
 
         private async Task CreateDataBase() // TODO: For tests only
         {
-            var database = new SQLiteAsyncConnection(_connectionDelegate);
+            var dropConnection = new SQLiteAsyncConnection(_connectionDelegate);
+            List<Task> dropTasks = new List<Task>();            
 
-            List<Task> tasks = new List<Task>();
+            dropTasks.Add(dropConnection.DropTableAsync<Card>());
+            dropTasks.Add(dropConnection.DropTableAsync<Woman>());
+            dropTasks.Add(dropConnection.DropTableAsync<Insight>());
+            dropTasks.Add(dropConnection.DropTableAsync<Answer>());
+            dropTasks.Add(dropConnection.DropTableAsync<Question>());
 
-            tasks.Add(database.DropTableAsync<Card>());
-            tasks.Add(database.DropTableAsync<Woman>());
-            tasks.Add(database.DropTableAsync<Insight>());
-            tasks.Add(database.DropTableAsync<Answer>());
-            tasks.Add(database.DropTableAsync<Question>());
+            await Task.WhenAll(dropTasks);
 
-            await Task.WhenAll(tasks);
-            tasks = new List<Task>();
+            var createConnection = new SQLiteAsyncConnection(_connectionDelegate);
+            List<Task> createTasks = new List<Task>();
+            
+            createTasks.Add(createConnection.CreateTableAsync<Card>());
+            createTasks.Add(createConnection.CreateTableAsync<Woman>());
+            createTasks.Add(createConnection.CreateTableAsync<Insight>());
+            createTasks.Add(createConnection.CreateTableAsync<Answer>());
+            createTasks.Add(createConnection.CreateTableAsync<Question>());
 
-            tasks.Add(database.CreateTableAsync<Card>());
-            tasks.Add(database.CreateTableAsync<Woman>());
-            tasks.Add(database.CreateTableAsync<Insight>());
-            tasks.Add(database.CreateTableAsync<Answer>());
-            tasks.Add(database.CreateTableAsync<Question>());
-
-            await Task.WhenAll(tasks);             
+            await Task.WhenAll(createTasks);             
         }
 
         private async Task CheckTables() // TODO: For tests only
