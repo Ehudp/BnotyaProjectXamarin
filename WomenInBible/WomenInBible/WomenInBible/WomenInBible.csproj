@@ -37,6 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Behaviors\ButtonClickTriggerAction.cs" />
+    <Compile Include="Behaviors\FadeOutBehavior.cs" />
+    <Compile Include="Behaviors\ViewAppearedBehavior.cs" />
+    <Compile Include="Converters\BooleanToObjectConverter.cs" />
     <Compile Include="Converters\StringToImageSourceConverter.cs" />
     <Compile Include="Converters\TestConverter.cs" />
     <Compile Include="CustomControls\Timer.cs" />
@@ -55,6 +59,7 @@
     <Compile Include="Managers\ISettings.cs" />
     <Compile Include="Managers\ISQLite.cs" />
     <Compile Include="Managers\SettingsManager.cs" />
+    <Compile Include="Messages\SplashFinishedMessage.cs" />
     <Compile Include="Messages\ViewAppearedMessage.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Card.cs" />
@@ -152,9 +157,6 @@
     <Reference Include="System.Data">
       <HintPath>..\..\Libs\System.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Behaviors">
-      <HintPath>..\..\packages\Xamarin.Forms.Behaviors.1.3.1\lib\Xamarin.Behaviors.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\..\packages\Xamarin.Forms.1.3.1.6296\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -192,9 +194,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Behaviors\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

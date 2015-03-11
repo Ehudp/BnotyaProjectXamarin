@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using WomenInBible.Managers;
 using WomenInBible.Models;
 using WomenInBible.Services;
+using WomenInBible.Messages;
 
 namespace WomenInBible.ViewModels
 {
@@ -42,6 +43,13 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _backgroundImage, value, () => BackgroundImage); }
         }
 
+        private bool _isLoaded;
+        public bool IsLoaded
+        {
+            get { return _isLoaded; }
+            set { SetProperty(ref _isLoaded, value, () => IsLoaded); }
+        } 
+
         private ICommand _openWomenListCommand;
         public ICommand OpenWomenListCommand
         {
@@ -73,11 +81,15 @@ namespace WomenInBible.ViewModels
         }
 
         public HomeViewModel()
-        {            
+        {
+            IsLoaded = false;
             Title = "Home";
             BackgroundImage = "clean_background.png";
             OpenWomenListButtonTitle = "Open Women List";
-            OpenTehilotButtonTitle = "Open Tehilot Page"; 
+            OpenTehilotButtonTitle = "Open Tehilot Page";
+
+            MessagingCenter.Subscribe<SplashFinishedMessage>(this, "Splash finished",
+                (message) => IsLoaded = true);
         }        
     }
 }

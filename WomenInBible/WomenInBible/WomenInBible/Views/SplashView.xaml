@@ -2,11 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WomenInBible.Views.SplashView"
-             BackgroundImage="{Binding BackgroundImage}"
-             xmlns:local="clr-namespace:WomenInBible.CustomViews;assembly=WomenInBible" > 
-  <StackLayout VerticalOptions="StartAndExpand"
-      Spacing = "10"
-      Padding = "10">
-      <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="{Binding ProgressColor}" />
-    </StackLayout>  
+             xmlns:local="clr-namespace:WomenInBible.CustomViews;assembly=WomenInBible"
+             xmlns:behaviors="clr-namespace:WomenInBible.Behaviors;assembly=WomenInBible"
+             xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
+             BackgroundColor="White"
+             BackgroundImage="{Binding BackgroundImage}">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:TestConverter x:Key="TestConverter"/>
+      <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>      
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.Behaviors>
+    <behaviors:ViewAppearedBehavior x:Name="ViewAppearedBehavior"/>
+  </ContentPage.Behaviors>
+
+  <Grid VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        BackgroundColor="Transparent">
+    <Image Source="{Binding SplashImage, Converter={StaticResource StringToImageSourceConverter}}"
+           VerticalOptions="FillAndExpand"
+           HorizontalOptions="FillAndExpand"
+           Aspect="AspectFill">
+      <Image.Behaviors>
+        <behaviors:FadeOutBehavior StartFadding="{Binding Source={x:Reference ViewAppearedBehavior}, Path=IsLoaded}"
+                                   MaxLength="3000"/>
+      </Image.Behaviors>
+    </Image>
+    <!--<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="{Binding ProgressColor}" />-->
+  </Grid>
 </ContentPage>

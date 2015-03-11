@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WomenInBible.Messages;
+using Xamarin.Forms;
 
 namespace WomenInBible.Views
 {
@@ -11,6 +13,6 @@ namespace WomenInBible.Views
         public HomeView()
         {
             InitializeComponent();
-        }        
+        }         
     }
 }

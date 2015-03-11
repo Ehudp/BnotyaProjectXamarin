@@ -86,27 +86,18 @@ namespace WomenInBible.Managers
 
         private async Task CreateDataBase() // TODO: For tests only
         {
-            var dropConnection = new SQLiteAsyncConnection(_connectionDelegate);
-            List<Task> dropTasks = new List<Task>();            
+            var connection = new SQLiteAsyncConnection(_connectionDelegate);
+            await connection.DropTableAsync<Card>();
+            await connection.DropTableAsync<Woman>();
+            await connection.DropTableAsync<Insight>();
+            await connection.DropTableAsync<Answer>();
+            await connection.DropTableAsync<Question>();
 
-            dropTasks.Add(dropConnection.DropTableAsync<Card>());
-            dropTasks.Add(dropConnection.DropTableAsync<Woman>());
-            dropTasks.Add(dropConnection.DropTableAsync<Insight>());
-            dropTasks.Add(dropConnection.DropTableAsync<Answer>());
-            dropTasks.Add(dropConnection.DropTableAsync<Question>());
-
-            await Task.WhenAll(dropTasks);
-
-            var createConnection = new SQLiteAsyncConnection(_connectionDelegate);
-            List<Task> createTasks = new List<Task>();
-            
-            createTasks.Add(createConnection.CreateTableAsync<Card>());
-            createTasks.Add(createConnection.CreateTableAsync<Woman>());
-            createTasks.Add(createConnection.CreateTableAsync<Insight>());
-            createTasks.Add(createConnection.CreateTableAsync<Answer>());
-            createTasks.Add(createConnection.CreateTableAsync<Question>());
-
-            await Task.WhenAll(createTasks);             
+            await connection.CreateTableAsync<Card>();
+            await connection.CreateTableAsync<Woman>();
+            await connection.CreateTableAsync<Insight>();
+            await connection.CreateTableAsync<Answer>();
+            await connection.CreateTableAsync<Question>();                      
         }
 
         private async Task CheckTables() // TODO: For tests only

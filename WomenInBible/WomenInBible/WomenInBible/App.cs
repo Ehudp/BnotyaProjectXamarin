@@ -27,9 +27,8 @@ namespace WomenInBible
 
             SetMainPage();
 
-            Task.Factory.StartNew(async (param) => 
-                await IoC.Resolve<NavigationProvider>().ShowViewModelModal<SplashViewModel>()
-                , TaskScheduler.FromCurrentSynchronizationContext());
+            Task.Run(async () =>
+                await IoC.Resolve<NavigationProvider>().ShowViewModelModal<SplashViewModel>());
         }
 
         private void SetMainPage()
@@ -37,7 +36,7 @@ namespace WomenInBible
             var rootPage = new MasterDetailPage();
             rootPage.Master = new MenuPage(rootPage);
             rootPage.Detail = new NavigationPage(ViewFactory.CreatePage<HomeViewModel>());
-            Navigation = rootPage.Detail.Navigation;
+            Navigation = rootPage.Detail.Navigation;            
             MainPage = rootPage;
         }                       
 

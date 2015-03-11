@@ -14,12 +14,6 @@ namespace WomenInBible.Views
         public SplashView()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            MessagingCenter.Send<ViewAppearedMessage>(new ViewAppearedMessage(), "View appeared");
-        }
+        }               
     }
 }

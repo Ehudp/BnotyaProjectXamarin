@@ -14,9 +14,16 @@ namespace WomenInBible.ViewModels
 {
     public class SplashViewModel : ViewModelBase
     {
-        public string BackgroundImage
+        public string SplashImage
         {
             get { return "background.png"; }            
+        }
+
+        private string _backgroundImage;
+        public string BackgroundImage
+        {
+            get { return _backgroundImage; }
+            set { SetProperty(ref _backgroundImage, value, () => BackgroundImage); }
         } 
         
         public Color ProgressColor
@@ -38,15 +45,17 @@ namespace WomenInBible.ViewModels
 
         public SplashViewModel()
         {
+            BackgroundImage = "clean_background.png";
             MessagingCenter.Subscribe<ViewAppearedMessage>(this, "View appeared", 
                 async (message) => await LoadDataAsync());
         }
 
         private async Task LoadDataAsync()
         {
-            IsLoading = true;
-            await IoC.Resolve<DatabaseManager>().InitializationAwaiter; // Create DB           
-            IsLoading = false;
+            // IsLoading = true;
+            await IoC.Resolve<DatabaseManager>().InitializationAwaiter; // Create DB
+            // IsLoading = false;
+            MessagingCenter.Send<SplashFinishedMessage>(new SplashFinishedMessage(), "Splash finished");
             await App.Navigation.PopModalAsync(true);
         }        
     }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
+             xmlns:behaviors="clr-namespace:WomenInBible.Behaviors;assembly=WomenInBible"
 					   x:Class="WomenInBible.Views.HomeView"
              Title="{Binding Title}"
              BackgroundImage="{Binding BackgroundImage}"
@@ -9,14 +10,24 @@
 
   <ContentPage.Resources>
     <ResourceDictionary>
-      <converters:TestConverter x:Key="TestConverter"/>      
+      <converters:TestConverter x:Key="TestConverter"/>
+      <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
+
+      <Style x:Key="ButtonStyle" TargetType="Button">        
+        <Style.Triggers>
+          <EventTrigger Event="Clicked">
+            <behaviors:ButtonClickTriggerAction />
+          </EventTrigger>
+        </Style.Triggers>
+      </Style>
     </ResourceDictionary>
   </ContentPage.Resources>
 
   <Grid VerticalOptions="Fill"
         HorizontalOptions="Fill"
         Padding="0, 20, 0, 20"
-        BackgroundColor="Transparent">
+        BackgroundColor="Transparent"
+        IsVisible="{Binding IsLoaded}">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
@@ -31,13 +42,15 @@
     <Button Text="{Binding OpenWomenListButtonTitle}"
             Command="{Binding OpenWomenListCommand}"
             HorizontalOptions="Fill"
-            Grid.ColumnSpan="2" />
+            Grid.ColumnSpan="2"
+            Style="{StaticResource ButtonStyle}" />      
 
     <Button Text="{Binding OpenTehilotButtonTitle}"
             Command="{Binding OpenTehilotCommand}"
             HorizontalOptions="Fill"
             Grid.Row="1"
-            Grid.ColumnSpan="2" />
+            Grid.ColumnSpan="2" 
+            Style="{StaticResource ButtonStyle}" />
 
     <Button Text="{Binding OpenWomenListButtonTitle}"
             Command="{Binding OpenWomenListCommand}"
