@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WomenInBible.Managers;
+using WomenInBible.Messages;
 using WomenInBible.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Labs.Data;
@@ -35,6 +37,23 @@ namespace WomenInBible.Models
         {
             get { return _insightImage; }
             set { SetProperty(ref _insightImage, value, () => InsightImage); }
+        }
+
+        private ICommand _deleteFavoriteInsightCommand;
+        [Ignore]
+        public ICommand DeleteFavoriteInsightCommand
+        {
+            get
+            {
+                return _deleteFavoriteInsightCommand ?? (_deleteFavoriteInsightCommand = new Command(
+                 async () =>
+                 {
+                     IsFavorite = 0;
+                     await IoC.Resolve<DatabaseManager>().UpdateAsync<Insight>(this, (ins) => ins.Id == Id);
+                     MessagingCenter.Send<FavoriteInsightRemovedMessage>(
+                         new FavoriteInsightRemovedMessage { InsightId = Id }, "Favorite Insight removed");
+                 }, () => true));
+            }
         }
 
         public void FillAllProperties<T>(T item)

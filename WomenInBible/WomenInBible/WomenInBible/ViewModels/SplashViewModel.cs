@@ -41,17 +41,25 @@ namespace WomenInBible.ViewModels
         {
             get { return _isLoading; }
             set { SetProperty(ref _isLoading, value, () => IsLoading); }
-        }        
+        }
 
         public SplashViewModel()
         {
             BackgroundImage = "clean_background.png";
             MessagingCenter.Subscribe<ViewAppearedMessage>(this, "View appeared", 
                 async (message) => await LoadDataAsync());
+
+            var settings = IoC.Resolve<SettingsManager>();
+
+            if (settings.InitMusicSetting)
+            {
+                SoundManager.SoundService.Volume = settings.MusicVolumeSetting;                
+                SoundManager.SoundService.PlayAsync("music.mp3");
+            }
         }
 
         private async Task LoadDataAsync()
-        {
+        {            
             // IsLoading = true;
             await IoC.Resolve<DatabaseManager>().InitializationAwaiter; // Create DB
             // IsLoading = false;

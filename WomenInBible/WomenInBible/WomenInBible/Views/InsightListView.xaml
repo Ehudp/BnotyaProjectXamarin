@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:custom="clr-namespace:WomenInBible.CustomViews;assembly=WomenInBible"
+             xmlns:behaviors="clr-namespace:WomenInBible.Behaviors;assembly=WomenInBible"
              x:Class="WomenInBible.Views.InsightListView"
              Title="{Binding Title}">
   <Grid>
@@ -17,32 +18,34 @@
       </Grid.ColumnDefinitions>
       <Button Text="{Binding UndoButtonTitle}"
               Command="{Binding UndoCommand}"
-             HorizontalOptions="FillAndExpand" />
+              HorizontalOptions="FillAndExpand" />
       <Button Text="{Binding OpenRandomInsightButtonTitle}"
               Command="{Binding OpenRandomInsightCommand}"
-               HorizontalOptions="FillAndExpand"              
+              HorizontalOptions="FillAndExpand"
               Grid.Column="1" />
     </Grid>
 
     <custom:CustomListView ItemsSource="{Binding FavoriteInsights}"
-                    SelectedItem="{Binding SelectedFavoriteInsight}"
-                    ItemClickCommand="{Binding SelectFavoriteInsightCommand}"
-                    x:Name="lst"
-                    RowHeight="35"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Fill"
+                           SelectedItem="{Binding SelectedFavoriteInsight}"
+                           ItemClickCommand="{Binding SelectFavoriteInsightCommand}"
+                           x:Name="lst"
+                           RowHeight="35"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Fill"
                            Grid.Row="1">
       <custom:CustomListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
             <ViewCell.ContextActions>
-              <custom:CustomMenuItem ItemClickCommand="{Binding DeleteFavoriteInsightCommand}"
-                      Text="Delete" IsDestructive="True" />
+              <MenuItem Command="{Binding DeleteFavoriteInsightCommand}"
+                        CommandParameter="{Binding .}"
+                        Text="Delete" IsDestructive="True" />
             </ViewCell.ContextActions>
 
             <StackLayout Padding="5, 5, 0, 5"
-                           Orientation="Horizontal"
-                           Spacing="15">
+                         HorizontalOptions="StartAndExpand"
+                         Orientation="Horizontal"
+                         Spacing="15">
 
               <Label Text="{Binding Name}"
                      Font="Bold, Medium" />

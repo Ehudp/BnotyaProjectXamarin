@@ -175,7 +175,7 @@ namespace WomenInBible.Managers
             set
             {
                 //if value has changed then save it!
-                AppSettings.AddOrUpdateValue("init_music_setting", value);
+                AppSettings.AddOrUpdateValue<bool>("init_music_setting", value);
             }
         }
 
@@ -183,12 +183,13 @@ namespace WomenInBible.Managers
         {
             get
             {
-                return AppSettings.GetValueOrDefault("music_volume_setting", 0);
+                return AppSettings.GetValueOrDefault("music_volume_setting", 50);
             }
             set
             {
                 //if value has changed then save it!
-                AppSettings.AddOrUpdateValue("music_volume_setting", value);
+                AppSettings.AddOrUpdateValue<int>("music_volume_setting", value);
+                SoundManager.SoundService.Volume = value;
             }
         }
 
@@ -201,7 +202,7 @@ namespace WomenInBible.Managers
             set
             {
                 //if value has changed then save it!
-                AppSettings.AddOrUpdateValue("init_notification_setting", value);
+                AppSettings.AddOrUpdateValue<bool>("init_notification_setting", value);
             }
         }
 
@@ -214,7 +215,7 @@ namespace WomenInBible.Managers
             set
             {
                 //if value has changed then save it!
-                AppSettings.AddOrUpdateValue("notification_time_setting", value);
+                AppSettings.AddOrUpdateValue<DateTime>("notification_time_setting", value);
             }
         }        
 

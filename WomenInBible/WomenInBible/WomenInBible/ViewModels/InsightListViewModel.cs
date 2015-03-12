@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WomenInBible.Managers;
+using WomenInBible.Messages;
 using WomenInBible.Models;
 using WomenInBible.Services;
 using Xamarin.Forms;
@@ -28,6 +29,13 @@ namespace WomenInBible.ViewModels
         {
             get { return _favoriteInsights; }
             set { SetProperty(ref _favoriteInsights, value, () => FavoriteInsights); }
+        }
+
+        private ObservableCollection<Insight> _removedInsights;
+        public ObservableCollection<Insight> RemovedInsights
+        {
+            get { return _removedInsights; }
+            set { SetProperty(ref _removedInsights, value, () => RemovedInsights); }
         }
 
         private Insight _selectedFavoriteInsight;
@@ -77,6 +85,7 @@ namespace WomenInBible.ViewModels
                      SelectedFavoriteInsight.IsFavorite = 0;
                      await IoC.Resolve<DatabaseManager>()
                          .UpdateAsync<Insight>(SelectedFavoriteInsight, (ins) => ins.Id == SelectedFavoriteInsight.Id);
+                     RemovedInsights.Add(SelectedFavoriteInsight);
                      FavoriteInsights.Remove(SelectedFavoriteInsight);
                  }, () => true));
             }
@@ -90,7 +99,15 @@ namespace WomenInBible.ViewModels
                 return _undoCommand ?? (_undoCommand = new Command(
                   async () =>
                   {
-                      // TODO: add Undo command
+                      foreach (var item in RemovedInsights)
+                      {
+                          item.IsFavorite = 1;
+                          await IoC.Resolve<DatabaseManager>()
+                            .UpdateAsync<Insight>(item, (ins) => ins.Id == item.Id);
+                          FavoriteInsights.Add(item);
+                      }
+                      RemovedInsights.Clear();
+                      
                   }, () => true));
             }
         }
@@ -121,6 +138,15 @@ namespace WomenInBible.ViewModels
             var results = Task.Run(async () => await IoC.Resolve<InsightService>().
                 GetFavoriteInsights()).ConfigureAwait(false).GetAwaiter().GetResult();
             FavoriteInsights = new ObservableCollection<Insight>(results);
+            RemovedInsights = new ObservableCollection<Insight>();
+
+            MessagingCenter.Subscribe<FavoriteInsightRemovedMessage>(this, "Favorite Insight removed",
+                (message) =>
+                {
+                    var insight = FavoriteInsights.Single(ins => ins.Id == message.InsightId);
+                    RemovedInsights.Add(insight);
+                    FavoriteInsights.Remove(insight);
+                });
         }
     }
 }

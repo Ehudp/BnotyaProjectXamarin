@@ -13,6 +13,6 @@ namespace WomenInBible.Views
         public InsightListView()
         {
             InitializeComponent();
-        }
+        }        
     }
 }

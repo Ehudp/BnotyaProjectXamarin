@@ -24,19 +24,16 @@ namespace WomenInBible
         public App()
         {
             InitApp();
-
-            SetMainPage();
-
-            Task.Run(async () =>
-                await IoC.Resolve<NavigationProvider>().ShowViewModelModal<SplashViewModel>());
+            SetMainPage();            
         }
 
-        private void SetMainPage()
+        private async void SetMainPage()
         {
             var rootPage = new MasterDetailPage();
             rootPage.Master = new MenuPage(rootPage);
             rootPage.Detail = new NavigationPage(ViewFactory.CreatePage<HomeViewModel>());
             Navigation = rootPage.Detail.Navigation;            
+            await IoC.Resolve<NavigationProvider>().ShowViewModelModal<SplashViewModel>();
             MainPage = rootPage;
         }                       
 
@@ -45,7 +42,7 @@ namespace WomenInBible
             if (!Resolver.IsSet)
             {
                 Resolver.SetResolver(IoC.Container.GetResolver());
-            }           
+            }            
 
             ViewFactory.Register<HomeView, HomeViewModel>();
             ViewFactory.Register<WomenListView, WomenListViewModel>();

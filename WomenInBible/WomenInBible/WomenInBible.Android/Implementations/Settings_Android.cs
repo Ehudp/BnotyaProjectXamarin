@@ -11,6 +11,7 @@ using Android.Widget;
 using WomenInBible.Managers;
 using WomenInBible.Droid;
 using Android.Preferences;
+using Android.Media;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Settings_Android))]
 namespace WomenInBible.Droid
@@ -27,7 +28,7 @@ namespace WomenInBible.Droid
         public Settings_Android()
         {
             SharedPreferences = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
-            SharedPreferencesEditor = SharedPreferences.Edit();
+            SharedPreferencesEditor = SharedPreferences.Edit();            
         }
 
         /// <summary>

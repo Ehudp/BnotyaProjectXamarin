@@ -70,7 +70,7 @@ namespace WomenInBible.Managers
                 var insight = new Insight 
                 { 
                     InsightImage = string.Format("card{0}b.png", i), 
-                    IsFavorite = 0, 
+                    IsFavorite = 1, 
                     Name = womenList[i - 1].Name 
                 };
 

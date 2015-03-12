@@ -35,13 +35,15 @@ namespace WomenInBible.Behaviors
         private static async void StartFaddingChanged(BindableObject bindable, bool oldValue, bool newValue)
         {
             var behavior = bindable as FadeOutBehavior;
+            var count = 0;
             if (newValue)
             {
                 await behavior._element.FadeTo(0.2, 1, Easing.Linear);
-                while (true)
+                while (count < 10)
                 {
                     await behavior._element.FadeTo(1, (uint)behavior.MaxLength, Easing.Linear);
-                    await behavior._element.FadeTo(0.2, (uint)behavior.MaxLength, Easing.Linear);                    
+                    await behavior._element.FadeTo(0.2, (uint)behavior.MaxLength, Easing.Linear);
+                    count++;
                 }
             }
         }

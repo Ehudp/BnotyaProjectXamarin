@@ -13,6 +13,9 @@ namespace WomenInBible.Views
         public HomeView()
         {
             InitializeComponent();
-        }         
+        }
+
+        // TODO: Add this after Forms 1.3.3 for backward navigation
+        //protected bool OnBackButtonPressed();
     }
 }
