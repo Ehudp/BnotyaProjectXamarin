@@ -31,11 +31,11 @@ namespace WomenInBible.ViewModels
             set { SetProperty(ref _favoriteInsights, value, () => FavoriteInsights); }
         }
 
-        private ObservableCollection<Insight> _removedInsights;
-        public ObservableCollection<Insight> RemovedInsights
+        private ObservableCollection<Insight> _originalInsights;
+        public ObservableCollection<Insight> OriginalInsights
         {
-            get { return _removedInsights; }
-            set { SetProperty(ref _removedInsights, value, () => RemovedInsights); }
+            get { return _originalInsights; }
+            set { SetProperty(ref _originalInsights, value, () => OriginalInsights); }
         }
 
         private Insight _selectedFavoriteInsight;
@@ -68,7 +68,7 @@ namespace WomenInBible.ViewModels
                   async () =>
                   {
                       var navParam = new Dictionary<string, object>();
-                      navParam.Add(SelectedFavoriteInsight.ToString(), SelectedFavoriteInsight);
+                      navParam.Add("Insight", SelectedFavoriteInsight);
                       await ShowViewModel<InsightViewModel>(navParam);
                   }, () => true));
             }
@@ -85,7 +85,9 @@ namespace WomenInBible.ViewModels
                      SelectedFavoriteInsight.IsFavorite = 0;
                      await IoC.Resolve<DatabaseManager>()
                          .UpdateAsync<Insight>(SelectedFavoriteInsight, (ins) => ins.Id == SelectedFavoriteInsight.Id);
-                     RemovedInsights.Add(SelectedFavoriteInsight);
+
+                     var insight = OriginalInsights.Single(ins => ins.Id == SelectedFavoriteInsight.Id);
+                     insight.IsFavorite = 0;                     
                      FavoriteInsights.Remove(SelectedFavoriteInsight);
                  }, () => true));
             }
@@ -99,14 +101,13 @@ namespace WomenInBible.ViewModels
                 return _undoCommand ?? (_undoCommand = new Command(
                   async () =>
                   {
-                      foreach (var item in RemovedInsights)
-                      {
-                          item.IsFavorite = 1;
-                          await IoC.Resolve<DatabaseManager>()
-                            .UpdateAsync<Insight>(item, (ins) => ins.Id == item.Id);
-                          FavoriteInsights.Add(item);
+                      foreach (var item in OriginalInsights.Where(ins => ins.IsFavorite == 0))
+                      {                          
+                              item.IsFavorite = 1;
+                              await IoC.Resolve<DatabaseManager>()
+                                .UpdateAsync<Insight>(item, (ins) => ins.Id == item.Id);                                                    
                       }
-                      RemovedInsights.Clear();
+                      FavoriteInsights = new ObservableCollection<Insight>(OriginalInsights);
                       
                   }, () => true));
             }
@@ -138,13 +139,12 @@ namespace WomenInBible.ViewModels
             var results = Task.Run(async () => await IoC.Resolve<InsightService>().
                 GetFavoriteInsights()).ConfigureAwait(false).GetAwaiter().GetResult();
             FavoriteInsights = new ObservableCollection<Insight>(results);
-            RemovedInsights = new ObservableCollection<Insight>();
+            OriginalInsights = new ObservableCollection<Insight>(results);
 
             MessagingCenter.Subscribe<FavoriteInsightRemovedMessage>(this, "Favorite Insight removed",
                 (message) =>
                 {
-                    var insight = FavoriteInsights.Single(ins => ins.Id == message.InsightId);
-                    RemovedInsights.Add(insight);
+                    var insight = FavoriteInsights.Single(ins => ins.Id == message.InsightId);                    
                     FavoriteInsights.Remove(insight);
                 });
         }

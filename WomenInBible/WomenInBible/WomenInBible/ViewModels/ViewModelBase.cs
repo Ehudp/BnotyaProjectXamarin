@@ -6,11 +6,23 @@ using System.Runtime.CompilerServices;
 using System.Linq;
 using Xamarin.Forms.Labs.Mvvm;
 using System.Threading.Tasks;
+using WomenInBible.Interfaces;
+using System.Windows.Input;
+using Xamarin.Forms;
+using WomenInBible.Models;
+using WomenInBible.Managers;
 
 namespace WomenInBible.ViewModels
 {
     public class ViewModelBase : ViewModel
     {
+        private string _result;
+        public string Result
+        {
+            get { return _result; }
+            private set { SetProperty(ref _result, value); }
+        }
+
         protected void RaisePropertyChanged<T>(params Expression<Func<T>>[] expressions)
         {
             foreach (var expression in expressions)
@@ -66,6 +78,87 @@ namespace WomenInBible.ViewModels
         internal virtual void OnClosed()
         {
 
+        }
+
+        public ICommand ShowAlertCommand
+        {
+            get
+            {
+                return new Command<AlertConfig>(async (alert) =>
+                {
+                    var service = DependencyService.Get<IUserDialogService>();
+                    await service.ShowAlertAsync(alert);
+                    alert.OnOk();                    
+                });
+            }
+        }
+
+        public ICommand ShowActionSheetCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    var cfg = new ActionSheetConfig { Title = "Test Title" };
+                    for (var i = 0; i < 10; i++)
+                    {
+                        var display = (i + 1);
+                        cfg.Add("Option " + display, () => Result = String.Format("Option {0} Selected", display));
+                    }
+                    var service = DependencyService.Get<IUserDialogService>();
+                    service.ShowActionSheet(cfg);
+                });
+            }
+        }
+
+        public ICommand ShowConfirmCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var service = DependencyService.Get<IUserDialogService>();
+                    var r = await service.ShowConfirmAsync("Pick a choice", "Pick Title", "Yes", "No");
+                    var text = (r ? "Yes" : "No");
+                    Result = "Confirmation Choice: " + text;
+                });
+            }
+        }
+
+        public ICommand ShowToastCommand
+        {
+            get
+            {
+                return new Command<ToastConfig>(async (toast) =>
+                {
+                    var service = DependencyService.Get<IUserDialogService>();
+                    await service.ShowToastAsync(toast);                    
+                });
+            }
+        }
+
+        public ICommand ShowPrompt
+        {
+            get { return ShowPromptCommand(false); }
+        }
+
+        public ICommand ShowPromptSecure
+        {
+            get { return ShowPromptCommand(true); }
+        }
+
+        private ICommand ShowPromptCommand(bool secure)
+        {
+            return new Command(async () =>
+            {
+                var type = (secure ? "secure text" : "text");
+                var service = DependencyService.Get<IUserDialogService>();
+                var r = await service.ShowPromptAsync(String.Format("Enter a {0} value", type.ToUpper()), secure: secure);
+                this.Result = (r.Ok
+                    ? "OK " + r.Text
+                    : secure + " Prompt Cancelled"
+                );
+            });
         }
     }
 }

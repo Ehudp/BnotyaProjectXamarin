@@ -106,6 +106,8 @@
   <ItemGroup>
     <Compile Include="Implementations\IOnAudioFocusChangeListener.cs" />
     <Compile Include="Implementations\SoundService_Android.cs" />
+    <Compile Include="Implementations\UserDialogService_Android.cs" />
+    <Compile Include="Renderers\CustomButtonRenderer.cs" />
     <Compile Include="Renderers\CustomGestureListener.cs" />
     <Compile Include="Renderers\CustomTabRenderer.cs" />
     <Compile Include="MainActivity.cs" />
@@ -170,7 +172,6 @@
     <AndroidResource Include="Resources\Drawable-hdpi\clean_background.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\clock_32.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\disable_32.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\enable_32.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\events_32.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\fast_forward_32.png" />
@@ -196,19 +197,16 @@
     <AndroidResource Include="Resources\Drawable-hdpi\set_time_32.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\settings_32.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\volume_32.png" />
-    <AndroidResource Include="Resources\Drawable-mdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_overflow_light.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_action_search.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_drawer.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\Drawable-xhdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_overflow_light.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_action_search.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_drawer.png" />
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\Drawable-xxhdpi\drawer_shadow.9.png" />
     <AndroidResource Include="Resources\Drawable-xxhdpi\ic_action_overflow.png" />
     <AndroidResource Include="Resources\Drawable-xxhdpi\ic_action_overflow_light.png" />
     <AndroidResource Include="Resources\Drawable-xxhdpi\ic_action_search.png" />
@@ -218,13 +216,47 @@
     <AndroidResource Include="Resources\Drawable-hdpi\clear_gray.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\clear_light.png" />
     <AndroidResource Include="Resources\Raw\music.mp3" />
+    <AndroidResource Include="Resources\Drawable-hdpi\horizontal_drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\horizontal_drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\horizontal_drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\horizontal_drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\drawer_shadow.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\button.png" />
+    <AndroidResource Include="Resources\Drawable-mdpi\button.png" />
+    <AndroidResource Include="Resources\Drawable-xhdpi\button.png" />
+    <AndroidResource Include="Resources\Drawable-xxhdpi\button.png" />
+    <AndroidResource Include="Resources\Drawable\btn_blue.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_blue_enabled.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_blue_focused.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_blue_pressed.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_disabled.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_disabled_focused.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_green.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_green_enabled.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_green_focused.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_green_pressed.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_grey.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_grey_enabled.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_grey_focused.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_grey_pressed.xml" />
+    <AndroidResource Include="Resources\Drawable\btn_text_color.xml" />
+    <AndroidResource Include="Resources\Values\colors.xml" />
+    <AndroidResource Include="Resources\Values\dimens.xml" />
+    <AndroidResource Include="Resources\Values\integers.xml" />
+    <AndroidResource Include="Resources\Values\strings.xml" />
+    <AndroidResource Include="Resources\Values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WomenInBible\WomenInBible.csproj">
       <Name>WomenInBible</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Layout\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

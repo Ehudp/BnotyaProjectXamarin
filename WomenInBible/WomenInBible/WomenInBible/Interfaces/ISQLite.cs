@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WomenInBible.Managers
+namespace WomenInBible.Interfaces
 {
     public interface ISQLite
     {

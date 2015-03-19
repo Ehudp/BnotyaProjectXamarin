@@ -4,12 +4,10 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content.Res;
 using Android.Media;
-using WomenInBible.Managers;
 using Xamarin.Forms.Labs.Services.SoundService;
-using WomenInBible.Droid.Implementations;
 using Android.Content;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SoundService_Android))]
+[assembly: Xamarin.Forms.Dependency(typeof(WomenInBible.Droid.Implementations.SoundService_Android))]
 namespace WomenInBible.Droid.Implementations
 {
     public class SoundService_Android : ISoundService

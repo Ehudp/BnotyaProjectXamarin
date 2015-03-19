@@ -2,10 +2,9 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using com.refractored.monodroidtoolkit;
-using WomenInBible.Droid.Renderers;
 using WomenInBible.CustomViews;
 
-[assembly: ExportRenderer(typeof(CircularProgress), typeof(CircularProgressRenderer))]
+[assembly: ExportRenderer(typeof(CircularProgress), typeof(WomenInBible.Droid.Renderers.CircularProgressRenderer))]
 namespace WomenInBible.Droid.Renderers
 {
     public class CircularProgressRenderer : ViewRenderer<CircularProgress, HoloCircularProgressBar>

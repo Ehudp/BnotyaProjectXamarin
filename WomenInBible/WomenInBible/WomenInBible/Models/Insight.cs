@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WomenInBible.Interfaces;
 using WomenInBible.Managers;
 using WomenInBible.Messages;
 using WomenInBible.ViewModels;

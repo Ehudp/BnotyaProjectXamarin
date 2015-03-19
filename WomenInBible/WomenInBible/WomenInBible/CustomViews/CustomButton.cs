@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
-namespace WomenInBible.Managers
+namespace WomenInBible.CustomViews
 {
-    public interface IMethods
+    public class CustomButton : Button
     {
-        void Close_App();
     }
 }

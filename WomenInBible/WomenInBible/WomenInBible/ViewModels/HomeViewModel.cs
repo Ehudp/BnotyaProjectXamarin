@@ -89,7 +89,7 @@ namespace WomenInBible.ViewModels
             OpenTehilotButtonTitle = "Open Tehilot Page";
 
             MessagingCenter.Subscribe<SplashFinishedMessage>(this, "Splash finished",
-                (message) => IsLoaded = true);
+                (message) => IsLoaded = true);            
         }        
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WomenInBible.Models
+namespace WomenInBible.Interfaces
 {
-    public interface IModel
+    public interface IMethods
     {
-        void FillAllProperties<T>(T item);
+        void Close_App();
     }
 }

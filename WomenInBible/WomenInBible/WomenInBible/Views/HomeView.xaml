@@ -3,6 +3,7 @@
 					   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:WomenInBible.Converters;assembly=WomenInBible"
              xmlns:behaviors="clr-namespace:WomenInBible.Behaviors;assembly=WomenInBible"
+             xmlns:custom="clr-namespace:WomenInBible.CustomViews;assembly=WomenInBible"
 					   x:Class="WomenInBible.Views.HomeView"
              Title="{Binding Title}"
              BackgroundImage="{Binding BackgroundImage}"
@@ -13,12 +14,13 @@
       <converters:TestConverter x:Key="TestConverter"/>
       <converters:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
 
-      <Style x:Key="ButtonStyle" TargetType="Button">        
+      <Style x:Key="ButtonStyle" TargetType="custom:CustomButton">        
         <Style.Triggers>
           <EventTrigger Event="Clicked">
             <behaviors:ButtonClickTriggerAction />
           </EventTrigger>
         </Style.Triggers>
+        <Setter Property="Opacity" Value="0.75"/>
       </Style>
     </ResourceDictionary>
   </ContentPage.Resources>
@@ -39,13 +41,13 @@
       <ColumnDefinition/>
     </Grid.ColumnDefinitions>
 
-    <Button Text="{Binding OpenWomenListButtonTitle}"
+    <custom:CustomButton Text="{Binding OpenWomenListButtonTitle}"
             Command="{Binding OpenWomenListCommand}"
             HorizontalOptions="Fill"
             Grid.ColumnSpan="2"
-            Style="{StaticResource ButtonStyle}" />      
+            Style="{StaticResource ButtonStyle}" />
 
-    <Button Text="{Binding OpenTehilotButtonTitle}"
+    <custom:CustomButton Text="{Binding OpenTehilotButtonTitle}"
             Command="{Binding OpenTehilotCommand}"
             HorizontalOptions="Fill"
             Grid.Row="1"

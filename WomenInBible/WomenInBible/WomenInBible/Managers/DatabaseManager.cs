@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using WomenInBible.Interfaces;
 using WomenInBible.Models;
 using WomenInBible.Services;
 using WomenInBible.ViewModels;

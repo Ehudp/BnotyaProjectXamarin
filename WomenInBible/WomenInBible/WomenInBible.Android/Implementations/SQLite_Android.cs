@@ -12,11 +12,10 @@ using System.IO;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Platform.XamarinAndroid;
-using WomenInBible.Managers;
-using WomenInBible.Droid;
+using WomenInBible.Interfaces;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SQLite_Android))]
-namespace WomenInBible.Droid
+[assembly: Xamarin.Forms.Dependency(typeof(WomenInBible.Droid.Implementations.SQLite_Android))]
+namespace WomenInBible.Droid.Implementations
 {
     public class SQLite_Android : ISQLite
     {

@@ -10,10 +10,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
-using WomenInBible.Droid.Renderers;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(Xamarin.Forms.TimePicker), typeof(CustomTimePickerRenderer))]
+[assembly: ExportRenderer(typeof(Xamarin.Forms.TimePicker), typeof(WomenInBible.Droid.Renderers.CustomTimePickerRenderer))]
 namespace WomenInBible.Droid.Renderers
 {
     public class CustomTimePickerRenderer : ViewRenderer<Xamarin.Forms.TimePicker, Android.Widget.EditText>, TimePickerDialog.IOnTimeSetListener, IJavaObject, IDisposable

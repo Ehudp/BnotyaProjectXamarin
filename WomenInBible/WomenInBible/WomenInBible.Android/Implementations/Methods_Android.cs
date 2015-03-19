@@ -8,11 +8,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using WomenInBible.Managers;
-using WomenInBible.Droid;
+using WomenInBible.Interfaces;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Methods_Android))]
-namespace WomenInBible.Droid
+[assembly: Xamarin.Forms.Dependency(typeof(WomenInBible.Droid.Implementations.Methods_Android))]
+namespace WomenInBible.Droid.Implementations
 {
     public class Methods_Android : IMethods
     {

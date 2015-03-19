@@ -7,6 +7,6 @@
         Padding="0, 20, 0, 20"
         BackgroundColor="Transparent">
     <Image Source="{Binding CurrentInsight.InsightImage}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-    <Button Text="{Binding MakeFavoriteButtonTitle}" Command="{Binding MakeFavoriteCommand}" HorizontalOptions="Start" />
+    <Button Text="{Binding MakeFavoriteButtonTitle}" Command="{Binding MakeFavoriteCommand}" HorizontalOptions="Start" VerticalOptions="Start" />
   </Grid>
 </ContentPage>

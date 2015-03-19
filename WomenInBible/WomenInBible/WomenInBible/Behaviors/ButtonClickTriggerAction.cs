@@ -10,12 +10,9 @@ namespace WomenInBible.Behaviors
     public class ButtonClickTriggerAction : TriggerAction<Button>
     {
         protected async override void Invoke(Button button)
-        {
-            var color = button.BackgroundColor;
-            button.BackgroundColor = Color.Aqua;
-            await button.ScaleTo(0.9, 100, Easing.Linear);
-            button.BackgroundColor = color;            
-            button.ScaleTo(1, 100, Easing.Linear);
+        {            
+            //await button.ScaleTo(0.9, 100, Easing.Linear);                     
+            //button.ScaleTo(1, 100, Easing.Linear);
         }
     }
 }

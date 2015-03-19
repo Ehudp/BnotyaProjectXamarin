@@ -50,20 +50,15 @@ namespace WomenInBible.ViewModels
             get
             {
                 return _answerSelectedCommand ?? (_answerSelectedCommand = new Command(
-                  async () =>
+                  () =>
                   {
                       if (SelectedAnswer.Id == CurrentQuestion.CorrectAnswerId)
-                      {
-                          // TODO: Victory
-                      }
+                          ShowToastCommand.Execute(new ToastConfig { Message = "Victory" });
                       else
-                      {
-                          // TODO: Error
-                      }
+                          ShowToastCommand.Execute(new ToastConfig { Message = "Error" });
                   }, () => true));
             }
         }
-
 
         public TriviaViewModel()
         {

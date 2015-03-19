@@ -9,6 +9,7 @@ using WomenInBible.Managers;
 using Xamarin.Forms;
 using Xamarin.Forms.Labs.Mvvm;
 using WomenInBible.Providers;
+using WomenInBible.Interfaces;
 
 namespace WomenInBible.CustomViews
 {
