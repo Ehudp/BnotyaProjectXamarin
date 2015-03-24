@@ -4,10 +4,9 @@ using Foundation;
 #else
 using MonoTouch.Foundation;
 #endif
-using WomenInBible.Managers;
-using WomenInBible.iOS;
+using WomenInBible.Interfaces;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Settings_iOS))]
+[assembly: Xamarin.Forms.Dependency(typeof(WomenInBible.iOS.Settings_iOS))]
 namespace WomenInBible.iOS
 {
     public class Settings_iOS : ISettings

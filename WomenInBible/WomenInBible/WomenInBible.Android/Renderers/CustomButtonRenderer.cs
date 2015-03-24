@@ -30,7 +30,7 @@ namespace WomenInBible.Droid.Renderers
 
             if (Control != null)
             {
-                var drawable = Context.Resources.GetDrawable(Resource.Drawable.btn_blue);
+                var drawable = Context.Resources.GetDrawable(Resource.Drawable.btn_image);
                 Control.SetBackgroundDrawable(drawable);
                 Control.SetTextSize(global::Android.Util.ComplexUnitType.Dip, 18);
                 Control.SetTypeface(null, global::Android.Graphics.TypefaceStyle.Bold);
@@ -38,7 +38,8 @@ namespace WomenInBible.Droid.Renderers
                 Control.SetTextColor(color);                
                 Control.SetPadding(30, 10, 30, 10);
                 var shadowColor = Context.Resources.GetColor(Resource.Color.btn_shadow);
-                Control.SetShadowLayer(1, 0, -1, shadowColor);                
+                Control.SetShadowLayer(2, 1, -1, shadowColor);
+                Control.SetLayerType(LayerType.Software, null);
             }
         }
     }

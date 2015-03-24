@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using WomenInBible.Managers;
+using WomenInBible.Interfaces;
 using SQLite.Net.Platform.XamarinIOS;
-using WomenInBible.iOS;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SQLite_iOS))]
+[assembly: Xamarin.Forms.Dependency(typeof(WomenInBible.iOS.SQLite_iOS))]
 namespace WomenInBible.iOS
 {
     public class SQLite_iOS : ISQLite

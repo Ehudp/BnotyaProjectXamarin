@@ -6,9 +6,7 @@
         android:startColor="@color/btn_blue_dark" />
     <stroke
         android:width="@dimen/btn_strokeWidth"
-        android:color="@color/btn_stroke" >
-    </stroke>
-
+        android:color="@color/btn_stroke" />
     <corners
         android:bottomLeftRadius="@dimen/btn_radius"
         android:bottomRightRadius="@dimen/btn_radius"

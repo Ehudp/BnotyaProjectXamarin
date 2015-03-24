@@ -70,7 +70,8 @@
           <Label Text="{Binding MusicSwitchLegend}" Font="14"/>
         </StackLayout>
 
-        <custom:CustomSwitch IsToggled="{Binding MusicToggled, Mode=TwoWay}" ToggledCommand="{Binding InitMusicCommand}"/>
+        <custom:CustomSwitch IsToggled="{Binding MusicToggled, Mode=TwoWay}" ToggledCommand="{Binding InitMusicCommand}"
+                             HeightRequest="30" WidthRequest="100"/>
       </StackLayout>
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Vertical"
@@ -105,7 +106,8 @@
           <Label Text="{Binding NotificationSwitchLegend}" Font="14"/>
         </StackLayout>
 
-        <custom:CustomSwitch IsToggled="{Binding NotificationToggled, Mode=TwoWay}" ToggledCommand="{Binding InitNotificationCommand}"/>
+        <custom:CustomSwitch IsToggled="{Binding NotificationToggled, Mode=TwoWay}" ToggledCommand="{Binding InitNotificationCommand}"
+                             HeightRequest="30" WidthRequest="100"/>
       </StackLayout>
 
       <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Orientation="Vertical"
